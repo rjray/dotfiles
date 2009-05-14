@@ -1,0 +1,31 @@
+[user]
+	name = Randy J. Ray
+	email = rjray@blackperl.com
+[apply]
+	whitespace = nowarn
+[color]
+	status = auto
+	branch = auto
+	diff = auto
+[github]
+	user = rjray
+	token = e3199b1aeead93eda512560efe8e86fd
+[core]
+	excludesfile = /home/users/rjray/.gitexcludes
+[pager]
+	status = no
+	log = no
+	diff = no
+[alias]
+    st = status
+    d = diff
+    ci = commit -v
+    cia = commit -v -a
+    co = checkout
+    l = log
+    ll = log -p
+    lt = log trunk..
+    llt = log -p trunk..
+    lm = log master..
+    llm = log -p master..
+    b = branch

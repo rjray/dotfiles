@@ -1,0 +1,12 @@
+#!/bin/sh
+rsync -av dotfiles/ ~
+lesskey lesskey.txt
+
+if [ -z "${HOSTNAME}" ]; then
+    HOSTNAME=$(hostname)
+fi
+
+if [ -f hosts/${HOSTNAME} ]; then
+    echo "Installing hosts/${HOSTNAME} as ${HOME}/.bash-${HOSTNAME}"
+    cp hosts/${HOSTNAME} ${HOME}/.bash-${HOSTNAME}
+fi

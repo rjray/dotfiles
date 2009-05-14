@@ -1,0 +1,28 @@
+alias Perl=/service/local/bin/perl
+alias Perldoc=/service/local/bin/perldoc
+
+export BUILD_TYPE=dev
+export JAVA_HOME=/service/external/java
+
+# p4 crap
+Sync() {
+	p4 sync $*
+}
+Edit() {
+	p4 edit $*
+}
+Resolve() {
+	p4 resolve $*
+}
+Submit() {
+	p4 submit $*
+}
+Opened() {
+	p4 opened $*
+}
+Revert() {
+	p4 revert $*
+}
+Diff() {
+	p4 diff $*
+}

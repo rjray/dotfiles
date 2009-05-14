@@ -1,0 +1,4 @@
+# Aliases specific to gangrel
+backuphome () {
+    rsync -e ssh -auzv --delete --exclude '/Dropbox' --exclude '.Trash' --exclude '.mozilla/firefox/*/Cache' --exclude '/.cache' /home/users/rjray/ tremere:/freeagent0/backups/gangrel/rjray
+}

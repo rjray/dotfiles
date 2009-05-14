@@ -1,0 +1,14 @@
+;; Object pd/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "pd/"
+  :tables (list 
+   (semanticdb-table "io-mode.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 'nil
+    :file "io-mode.el"
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre3"
+  :semanticdb-version "2.0pre3"
+  )

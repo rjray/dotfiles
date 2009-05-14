@@ -1,0 +1,7 @@
+# .lesskey - personal key binding supplements for less(1)
+# to use this: C<lesskey lesskey.txt>, creates ~/.less
+
+#command
+^N      next-file
+^P      prev-file
+^X      examine
