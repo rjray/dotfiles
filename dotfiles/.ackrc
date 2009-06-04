@@ -1,1 +1,2 @@
 --type-add=php=.tpl
+--type-set=config=.conf,.ini

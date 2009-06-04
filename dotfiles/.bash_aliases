@@ -39,3 +39,7 @@ moduse() {
     shift
     ack -L "use $pkg" `ack -l "$pkg" $*`
 }
+
+localtime () {
+    perl -le 'for (@ARGV) { print scalar localtime($_) }' $*
+}
