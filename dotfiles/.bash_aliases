@@ -14,6 +14,7 @@ alias lll='/bin/ls -saild'
 alias ls='ls -F'
 alias lsd='ls -d .[0-9a-zA-Z]*'
 alias po=popd
+alias popcorn='ssh -p 21234 popcorn'
 alias pu=pushd
 alias rehash='hash -r'
 alias sds=dirs
