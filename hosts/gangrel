@@ -2,3 +2,11 @@
 backuphome () {
     rsync -e ssh -auzv --delete --exclude '/Dropbox' --exclude '.Trash' --exclude '.mozilla/firefox/*/Cache' --exclude '/.cache' /home/users/rjray/ tremere:/freeagent0/backups/gangrel/rjray
 }
+
+mtremere () {
+    grep tremere /etc/fstab | awk '{print $1}' | xargs -n 1 -r mount
+}
+
+umtremere () {
+    df | grep tremere: | awk '{print $1}' | xargs -n 1 -r umount
+}

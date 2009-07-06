@@ -72,6 +72,7 @@ function! Coverage()
 endfunction
 
 " Auto-commands based on file-type and/or buffer life-cycle
+au! FileType gitcommit setlocal textwidth=79 noexpandtab 
 au! FileType java   set shiftwidth=4 tabstop=4
 au! FileType perl          :call PerlMappings()
 au! BufRead,BufNewFile *.t :call PerlTestMappings()
