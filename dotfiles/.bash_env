@@ -22,6 +22,7 @@ export JAVA_HOME=/opt/java
 export LD_LIBRARY_PATH=/opt/java/jre/lib/i386/client:/opt/java/jre/lib/i386/native_threads:/opt/java/jre/lib/i386:/usr/local/lib:.
 export LESS="-MdqC"
 export LESSCHARSET=utf-8
+export MANPAGER="/usr/bin/most -s"
 export MANPATH=/usr/man:/usr/local/man:/usr/share/man:${HOME}/bin/man:/opt/java/man:{$MANPATH}
 export NAME="Randy J. Ray"
 export PAGER=/usr/bin/less
