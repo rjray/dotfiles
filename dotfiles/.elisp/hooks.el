@@ -72,6 +72,7 @@
              (define-key cperl-mode-map "\C-cs" 'perl-insert-sub-hdr)
              (define-key cperl-mode-map "\C-c%" 'match-paren)
              (local-set-key "%" 'self-insert-command)
+			 (local-set-key "[(control f7)]" 'run-perltidy)
              (setq cperl-tab-always-indent t)
              (setq cperl-tab-to-comment t)
              (setq cperl-indent-level 4)

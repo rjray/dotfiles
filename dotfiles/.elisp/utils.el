@@ -1,12 +1,9 @@
-;;; $Id$
-;;;
 ;;; Basic utility functions, most of which were obtained elsewhere. None of
 ;;; these should be directly bound to keys (those belong in keys.el) -- these
 ;;; should only be things like support code for hooks, menu functionality,
 ;;; etc. Calls to "add-hook" or "add-submenu" are OK here (as opposed to
 ;;; hooks.el or e_init.el) as long as they only refer to functionality defined
 ;;; here.
-;;;
 
 (require 'cl)
 
@@ -89,16 +86,6 @@ bindings to use in the edit buffer."
                 (not (funcall (car hooks))))
       (setq hooks (cdr hooks)))
     hooks))
-
-(defun add-x-face ()
-  (save-excursion 
-    (goto-char (point-min))
-    (cond ((search-forward "X-Face:" nil t) t)
-          (t (progn
-               (search-forward mail-header-separator)
-               (beginning-of-line nil)
-               (insert "X-Face:")
-               (insert-file (concat homedir "/.face")))))))
 
 (defun update-session ()
   (interactive)

@@ -37,26 +37,19 @@
     ((eq last-command 'home)
      (move-to-window-line 0))
     (t (beginning-of-line)))
-  (setq last-last-command last-command)
-)
+  (setq last-last-command last-command))
 
 (defun end ()
   "End - end of line, once more - screen, once more - buffer."
   (interactive nil)
   (cond
     ((and (eq last-command 'end) (eq last-last-command 'end))
-     (goto-char (point-max))
-    )
+     (goto-char (point-max)))
     ((eq last-command 'end)
      (move-to-window-line -1)
-     (end-of-line)
-    )
-    (t
-     (end-of-line)
-    )
-  )
-  (setq last-last-command last-command)
-)
+     (end-of-line))
+    (t (end-of-line)))
+  (setq last-last-command last-command))
 
 ;;; These commands work for debugging programs. One command flags the
 ;;; current line as a debugging statement by appending the current value
@@ -116,7 +109,7 @@ each line before deleting it."
   (if (or (= in-char 121)
           (= in-char 89))
       t))
-  
+
 (defun count-region (start end)
   "Count lines, words and characters in region."
   (interactive "r")
@@ -241,6 +234,14 @@ each line before deleting it."
          (untabify (region-beginning) (region-end)))
         (t (untabify 0 (point-max))))
   (save-buffer))
+
+(defun run-perltidy ()
+  "Run perltidy on the buffer or region"
+  (interactive)
+  (cond ((region-active-p)
+         (shell-command-on-region (region-beginning) (region-end)
+                                  "perltidy" nil t))
+		(t (shell-command-on-region 0 (point-max) "perltidy" nil t))))
 
 ;;;
 ;;; Borrowed from benscott@mcs.net:

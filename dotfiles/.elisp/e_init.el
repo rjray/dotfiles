@@ -1,8 +1,5 @@
-;;; $Id$
-;;;
 ;;; Basically a junk-drawer, a place to put the stuff that doesn't really
 ;;; fit elsewhere.
-;;;
 
 (require 'cl)
 (require 'ack)
@@ -16,18 +13,13 @@
 (setq-default make-backup-files nil)
 (setq-default ps-print-color-p nil)
 (setq-default tab-stop-list
-	      (mapcar (lambda (x) (* 4 x))
-		      '(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)))
+          (mapcar (lambda (x) (* 4 x))
+              '(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)))
 (setq-default tab-width 4)
 
 (setq default-major-mode 'text-mode)
 (setq delete-auto-save-files t)
 (setq browse-url-netscape-arguments nil)
-
-;; Setting for perl-journal-post-entry, from keys.el
-(setq perl-journal-uid 1649)
-(setq perl-journal-passwd "graf1x")
-(setq perl-journal-command (concat (getenv "HOME") "/bin/upj_post.pl"))
 
 (global-set-key "\e*" 'new-interactive-lisp)
 ;(global-set-key "\C-cd" 'set-line-as-debug)
@@ -99,11 +91,11 @@
                                    (insert " ")
                                    (backward-char)))
 (global-set-key [(button4)] (lambda ()
-			      (interactive)
-			      (scroll-down 3)))
+                  (interactive)
+                  (scroll-down 3)))
 (global-set-key [(button5)] (lambda ()
-			      (interactive)
-			      (scroll-up 3)))
+                  (interactive)
+                  (scroll-up 3)))
 
 (define-key esc-map "=" 'count-region)
 (define-key esc-map "\C-y" 'yank-and-indent)
