@@ -200,3 +200,98 @@
 
 (setq ri-ruby-script (concat (getenv "HOME") "/.elisp/ri-emacs.rb"))
 
+(defun replace-regexp-in-string (regexp rep string &optional
+                                        fixedcase literal subexp start)
+  "Replace all matches for REGEXP with REP in STRING.
+
+Return a new string containing the replacements.
+
+Optional arguments FIXEDCASE, LITERAL and SUBEXP are like the
+arguments with the same names of function `replace-match'.  If START
+is non-nil, start replacements at that index in STRING.
+
+REP is either a string used as the NEWTEXT arg of `replace-match' or a
+function.  If it is a function, it is called with the actual text of each
+match, and its value is used as the replacement text.  When REP is called,
+the match-data are the result of matching REGEXP against a substring
+of STRING.
+
+To replace only the first match (if any), make REGEXP match up to \\'
+and replace a sub-expression, e.g.
+  (replace-regexp-in-string \"\\\\(foo\\\\).*\\\\'\" \"bar\" \" foo foo\" nil nil 1)
+    => \" bar foo\"
+"
+
+  ;; To avoid excessive consing from multiple matches in long strings,
+  ;; don't just call `replace-match' continually.  Walk down the
+  ;; string looking for matches of REGEXP and building up a (reversed)
+  ;; list MATCHES.  This comprises segments of STRING which weren't
+  ;; matched interspersed with replacements for segments that were.
+  ;; [For a `large' number of replacements it's more efficient to
+  ;; operate in a temporary buffer; we can't tell from the function's
+  ;; args whether to choose the buffer-based implementation, though it
+  ;; might be reasonable to do so for long enough STRING.]
+  (let ((l (length string))
+        (start (or start 0))
+        matches str mb me)
+    (save-match-data
+      (while (and (< start l) (string-match regexp string start))
+        (setq mb (match-beginning 0)
+              me (match-end 0))
+        ;; If we matched the empty string, make sure we advance by one char
+        (when (= me mb) (setq me (min l (1+ mb))))
+        ;; Generate a replacement for the matched substring.
+        ;; Operate only on the substring to minimize string consing.
+        ;; Set up match data for the substring for replacement;
+        ;; presumably this is likely to be faster than munging the
+        ;; match data directly in Lisp.
+        (string-match regexp (setq str (substring string mb me)))
+        (setq matches
+              (cons (replace-match (if (stringp rep)
+                                       rep
+                                     (funcall rep (match-string 0 str)))
+                                   fixedcase literal str subexp)
+                    (cons (substring string start mb) ; unmatched prefix
+                          matches)))
+        (setq start me))
+      ;; Reconstruct a string from the pieces.
+      (setq matches (cons (substring string start l) matches)) ; leftover
+      (apply #'concat (nreverse matches)))))
+
+(defmacro define-compilation-mode (mode name doc &rest body)
+  "This is like `define-derived-mode' without the PARENT argument.
+The parent is always `compilation-mode' and the customizable `compilation-...'
+variables are also set from the name of the mode you have chosen,
+by replacing the first word, e.g `compilation-scroll-output' from
+`grep-scroll-output' if that variable exists."
+  (let ((mode-name (replace-regexp-in-string "-mode\\'" "" (symbol-name mode))))
+    `(define-derived-mode ,mode compilation-mode ,name
+       ,doc
+       ,@(mapcar (lambda (v)
+                   (setq v (cons v
+                                 (intern-soft (replace-regexp-in-string
+                                               "^compilation" mode-name
+                                               (symbol-name v)))))
+                   (and (cdr v)
+                        (or (boundp (cdr v))
+                            (if (boundp 'byte-compile-bound-variables)
+                                (memq (cdr v) byte-compile-bound-variables)))
+                        `(set (make-local-variable ',(car v)) ,(cdr v))))
+                 '(compilation-buffer-name-function
+                   compilation-directory-matcher
+                   compilation-error
+                   compilation-error-regexp-alist
+                   compilation-error-regexp-alist-alist
+                   compilation-error-screen-columns
+                   compilation-finish-function
+                   compilation-finish-functions
+                   compilation-first-column
+                   compilation-mode-font-lock-keywords
+                   compilation-page-delimiter
+                   compilation-parse-errors-filename-function
+                   compilation-process-setup-function
+                   compilation-scroll-output
+                   compilation-search-path
+                   compilation-skip-threshold
+                   compilation-window-height))
+       ,@body)))
