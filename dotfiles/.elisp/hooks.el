@@ -2,11 +2,11 @@
           '(lambda () (setq font-lock-maximum-decoration 4)))
 
 (add-hook 'before-save-hook
-	  '(lambda ()
-	     (cond ((region-active-p)
-		    (delete-trailing-whitespace (region-beginning)
-						(region-end)))
-		   (t (delete-trailing-whitespace 0 (point-max))))))
+      '(lambda ()
+         (cond ((region-active-p)
+            (delete-trailing-whitespace (region-beginning)
+                        (region-end)))
+           (t (delete-trailing-whitespace 0 (point-max))))))
 
 (add-hook 'dired-load-hook
           '(lambda () (define-key dired-mode-map "I"
@@ -72,7 +72,6 @@
              (define-key cperl-mode-map "\C-cs" 'perl-insert-sub-hdr)
              (define-key cperl-mode-map "\C-c%" 'match-paren)
              (local-set-key "%" 'self-insert-command)
-			 (local-set-key "[(control f7)]" 'run-perltidy)
              (setq cperl-tab-always-indent t)
              (setq cperl-tab-to-comment t)
              (setq cperl-indent-level 4)
@@ -82,72 +81,6 @@
              (setq cperl-brace-imaginary-offset 0)
              (setq cperl-label-offset -2)
              (setq debug-line-marker-string "#// DEBUG")))
-
-(add-hook 'tcl-mode-hook
-          '(lambda ()
-             (setq tcl-tab-always-indent t)
-             (setq tcl-indent-level 4)
-             (setq tcl-continued-indent-level 4)
-             (setq debug-line-marker-string ";# DEBUG")
-             ;; I don't particularly care for the way the keywords and such
-             ;; are setup for hi-lighting under font-lock. I also want most
-             ;; of the Tk stuff noted, as well:
-             (setq tcl-typeword-list
-                   '("global" "uplevel" "upvar" "inherit" "public"
-                     "protected" "common" "button" "frame" "pack" "grid"
-                     "image" "array" "file" "time" "canvas" "checkbutton"
-                     "clipboard" "entry" "label" "listbox" "menu" "menubutton"
-                     "message" "radiobutton" "scrollbar" "toplevel" "text"
-                     "scale" "tkwait"))
-             (setq tcl-keyword-list
-                   '("if" "then" "else" "elseif" "for" "foreach" "break"
-                     "continue" "while" "eval" "case" "in" "switch" "default"
-                     "exit" "error" "proc" "return" "uplevel" "constructor"
-                     "destructor" "itcl_class" "loop" "for_array_keys"
-                     "for_recursive_glob" "for_file" "create" "photo" "bitmap"
-                     "configure" "cget" "delete" "height" "names" "type"
-                     "types" "width" "after" "append" "anymore" "donesearch"
-                     "exists" "get" "nextelement" "set" "size" "startsearch"
-                     "catch" "exec" "expr" "atime" "copy" "dirname" "isfile"
-                     "isdirectory" "exectuable" "extension" "join" "lstat"
-                     "mkdir" "mtime" "owned" "pathtype" "readable" "readlink"
-                     "rename" "rootname" "split" "stat" "tail" "writable"
-                     "flush" "open" "close" "socket" "package" "regsub" "seek"
-                     "return" "scan" "tell" "trace" "variable" "vdelete"
-                     "vinfo" "unset" "idletasks" "update" "concat" "incr"
-                     "puts" "fileevent" "package" "clear" "destroy" "wm"
-                     "winfo" "identity" "coords" "place" "bell" "bindtags"
-                     "raise" "send" "place" "lower" "focus" "event" "grab"
-                     "option" "tkerror" "bgerror" "visibility" "window"))
-             (tcl-set-font-lock-keywords)
-             (turn-on-font-lock)))
-
-(add-hook 'fortran-mode-hook
-          '(lambda ()
-             (turn-on-font-lock)
-             (define-key fortran-mode-map "\C-z" 'write-and-suspend-emacs)
-             (define-key fortran-mode-map "\C-ch" 'my-style-fortran-header)
-             (define-key fortran-mode-map "\C-cu" 'fortran-update-mod-time)
-             (define-key fortran-mode-map "\C-cr" 'fortran-ruler)
-             (setq debug-line-marker-string "print *,")
-             (setq fortran-do-indent 2)
-             (setq fortran-if-indent 2)
-             (setq fortran-comment-line-column 2)
-             (setq fortran-continuation-char ?+)))
-
-(add-hook 'TeX-mode-hook
-          '(lambda ()
-             (define-key TeX-mode-map
-               "\C-c\\" 'tex-insert-plain-command)))
-
-(add-hook 'LaTeX-mode-hook
-          '(lambda ()
-             (define-key TeX-mode-map
-               "\C-c\C-m" 'latex-make-environment)
-             (define-key TeX-mode-map
-               "\C-ci" 'latex-insert-begin)
-             (define-key TeX-mode-map
-               "\C-c\\" 'tex-insert-latex-command)))
 
 (add-hook 'makefile-mode-hook
           '(lambda ()
@@ -238,6 +171,6 @@
                                (backward-char 4)))))
 
 (add-hook 'ruby-mode-hook (lambda ()
-			    (local-set-key 'f1 'ri)
-			    (local-set-key "\M-\C-i" 'ri-ruby-complete-symbol)
-			    (local-set-key 'f4 'ri-ruby-show-args)))
+                (local-set-key 'f1 'ri)
+                (local-set-key "\M-\C-i" 'ri-ruby-complete-symbol)
+                (local-set-key 'f4 'ri-ruby-show-args)))

@@ -1,7 +1,4 @@
-;;; $Id$
-;;;
 ;;; These are the defun's tied to key-combos in the other config files.
-;;;
 
 (defun yank-and-indent ()
   "yank and then indent the newly formed region according to mode"
@@ -241,7 +238,8 @@ each line before deleting it."
   (cond ((region-active-p)
          (shell-command-on-region (region-beginning) (region-end)
                                   "perltidy" nil t))
-		(t (shell-command-on-region 0 (point-max) "perltidy" nil t))))
+		(t (shell-command-on-region (point-min) (point-max)
+									"perltidy" nil t))))
 
 ;;;
 ;;; Borrowed from benscott@mcs.net:

@@ -1,8 +1,5 @@
-;;; $Id$
-;;;
 ;;; Various auto-load commands to associate function names and mode names with
 ;;; specific files
-;;;
 
 (autoload 'sawfish-mode "sawfish")
 (autoload 'tcl-mode "tcl" "Tcl/Tk Editing Mode" t)
@@ -33,6 +30,8 @@
 
 (autoload 'db-find-file "database" "EDB database package" t)
 (autoload 'man "manual" "Improved Manual Browsing" t)
+(autoload 'prove "prove" "Perl prove" t)
+(autoload 'ack "ack" "Perl ack" t)
 (autoload 'sokoban "sokoban" "Sokoban" t)
 (autoload 'solitaire "solitaire" "Solitaire Stone Game" t)
 (autoload 'iso-accents-mode "iso-acc" "ISO Accents minor mode." t)
@@ -49,7 +48,6 @@
   "Keyboard-driven syntactical region selection" t)
 (autoload 'id-select-thing-with-mouse  "id-select"
   "Single mouse click syntactical region selection" t)
-(autoload 'vm-forward-message-and-complain "vm-complain" t)
 
 (autoload 'todo-mode "todo-mode" t)
 

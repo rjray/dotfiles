@@ -2,8 +2,6 @@
 ;;; fit elsewhere.
 
 (require 'cl)
-(require 'ack)
-(require 'prove)
 
 (turn-off-pending-delete)
 
@@ -48,6 +46,7 @@
 (global-set-key [(control f5)]   'search-backward-regexp)
 
 (global-set-key [(f6)]           'query-replace)
+(global-set-key [(control f6)]   'run-perltidy)
 
 (global-set-key [(f7)]           'fill-paragraph-or-region)
 (global-set-key [(control f7)]   'untab-buffer)
