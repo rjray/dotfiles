@@ -9,7 +9,7 @@
 	diff = auto
 [github]
 	user = rjray
-	token = e3199b1aeead93eda512560efe8e86fd
+	token = GITHUBTOKEN
 [core]
 	excludesfile = /home/users/rjray/.gitexcludes
 [pager]
