@@ -44,3 +44,7 @@ moduse() {
 localtime () {
     perl -le 'for (@ARGV) { print scalar localtime($_) }' $*
 }
+
+iplist() {
+    ifconfig | perl -nle '/dr:(\S+)/ && print $1'
+}
