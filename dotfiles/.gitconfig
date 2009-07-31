@@ -30,5 +30,5 @@
     llm = log -p master..
     b = branch
     pu = !"git fetch origin -v; git fetch source -v; git merge source/master"
-    up = pull origin master
+    up = pull --rebase origin master
     pom = push origin master
