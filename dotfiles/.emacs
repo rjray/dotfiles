@@ -1,7 +1,7 @@
 ;; .emacs
 
-;;; uncomment this line to disable loading of "default.el" at startup
-;; (setq inhibit-default-init t)
+(defconst homedir (getenv "HOME") "My home dir, regardless of host.")
+(setq load-path (cons (concat homedir "/.emacs.d") load-path))
 
 ;; Run as a server
 (server-mode 1)
@@ -28,10 +28,27 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(inhibit-startup-echo-area-message "rjray"))
+ '(blink-cursor-mode nil)
+ '(color-theme-selection "Vim Colors" nil (color-theme))
+ '(column-number-mode t)
+ '(inhibit-startup-buffer-menu t)
+ '(inhibit-startup-echo-area-message "rjray")
+ '(inhibit-startup-screen t)
+ '(menu-bar-mode t)
+ '(save-place t nil (saveplace))
+ '(scroll-bar-mode (quote right))
+ '(show-paren-mode t)
+ '(show-trailing-whitespace t)
+ '(size-indication-mode t)
+ '(tool-bar-mode nil)
+ '(transient-mark-mode t)
+ '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 85 :width normal :family "dejavu-dejavu sans mono"))))
+ '(develock-whitespace-3 ((t nil)))
+ '(trailing-whitespace ((t (:underline t))))
+ '(whitespace-highlight ((((class color) (background light)) (:background "green1" :underline t)))))
