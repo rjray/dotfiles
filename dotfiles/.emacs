@@ -17,11 +17,20 @@
 (setq frame-title-format
       (concat  "%b - emacs@" system-name))
 
+;;; These should eventually be moved to a start-up file other than this...
 ;; recentf stuff
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+(require 'linum)
+(global-linum-mode)
+
+(require 'ack)
+(require 'cl)
+
+;;; Added/updated by emacs
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -34,6 +43,7 @@
  '(inhibit-startup-buffer-menu t)
  '(inhibit-startup-echo-area-message "rjray")
  '(inhibit-startup-screen t)
+ '(make-backup-files nil)
  '(menu-bar-mode t)
  '(save-place t nil (saveplace))
  '(scroll-bar-mode (quote right))
