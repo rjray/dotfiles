@@ -17,18 +17,13 @@
 (setq frame-title-format
       (concat  "%b - emacs@" system-name))
 
-;;; These should eventually be moved to a start-up file other than this...
-;; recentf stuff
-(require 'recentf)
-(recentf-mode 1)
-(setq recentf-max-menu-items 25)
-(global-set-key "\C-x\ \C-r" 'recentf-open-files)
-
-(require 'linum)
-(global-linum-mode)
-
-(require 'ack)
-(require 'cl)
+;; Load my personalized code
+(load "e_init")
+(load "keys")
+(load "hooks")
+(load "mode-list")
+(load "autoloads")
+(load "utils")
 
 ;;; Added/updated by emacs
 

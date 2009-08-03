@@ -1,0 +1,95 @@
+(add-hook 'font-lock-mode-hook
+          '(lambda () (setq font-lock-maximum-decoration 4)))
+
+(add-hook 'before-save-hook
+      '(lambda ()
+         (cond ((symbol-value 'mark-active)
+            (my-delete-trailing-whitespace (region-beginning)
+                        (region-end)))
+           (t (my-delete-trailing-whitespace 0 (point-max))))))
+
+(add-hook 'lisp-mode-hook
+          '(lambda ()
+             (define-key lisp-mode-map "%" 'match-paren)
+             (if (and (featurep 'menubar)
+                      current-menubar)
+                 (progn
+                   ;; make a local copy of the menubar, so our modes don't
+                   ;; change the global menubar
+                   (set-buffer-menubar current-menubar)
+                   (add-submenu nil emacs-lisp-mode-menubar-menu)))))
+
+(add-hook 'c-mode-hook
+          '(lambda ()
+             (turn-on-font-lock)
+             (setq c-default-style "bsd")
+             (define-key c-mode-map "\C-cs" 'switch-c-mode-spacing)
+             (define-key c-mode-map "\C-cu" 'update-mod-time)
+             (define-key c-mode-map "\C-c\C-h" 'c-toggle-hungry-state)
+             (define-key c-mode-map "\C-c\C-d" 'delete-all-debug-lines)
+             (setq c-basic-offset 4)
+             (c-set-offset 'case-label '*)
+             (c-set-offset 'statement-case-intro '*)
+             (c-set-offset 'statement-case-open '*)
+             (setq debug-line-marker-string "/* DEBUG */")))
+
+(add-hook 'csharp-mode-hook
+          '(lambda ()
+             (turn-on-font-lock)
+             (setq c-default-style "bsd")
+             (define-key c-mode-map "\C-cs" 'switch-c-mode-spacing)
+             (define-key c-mode-map "\C-cu" 'update-mod-time)
+             (define-key c-mode-map "\C-c\C-h" 'c-toggle-hungry-state)
+             (define-key c-mode-map "\C-c\C-d" 'delete-all-debug-lines)
+             (setq c-basic-offset 4)
+             (c-set-offset 'case-label '*)
+             (c-set-offset 'statement-case-intro '*)
+             (c-set-offset 'statement-case-open '*)))
+
+(add-hook 'c++-mode-hook
+          '(lambda ()
+             (turn-on-font-lock)
+             (setq c-default-style "bsd")
+             (define-key c++-mode-map "\C-cu" 'update-mod-time)
+             (define-key c++-mode-map "\C-c\C-h" 'c-toggle-hungry-state)
+             (define-key c++-mode-map "\C-c\C-d" 'delete-all-debug-lines)
+             (setq c-basic-offset 4)
+             (c-set-offset 'case-label '*)
+             (c-set-offset 'statement-case-intro '*)
+             (setq debug-line-marker-string "// DEBUG")))
+
+(add-hook 'cperl-mode-hook
+          '(lambda ()
+             (turn-on-font-lock)
+             (define-key cperl-mode-map "\C-cf" 'perl-insert-file-hdr)
+             (define-key cperl-mode-map "\C-cl" 'perl-insert-lib-hdr)
+             (define-key cperl-mode-map "\C-cs" 'perl-insert-sub-hdr)
+             (define-key cperl-mode-map "\C-c%" 'match-paren)
+             (local-set-key "%" 'self-insert-command)
+             (setq cperl-tab-always-indent t)
+             (setq cperl-tab-to-comment t)
+             (setq cperl-indent-level 4)
+             (setq cperl-continued-statement-offset 4)
+             (setq cperl-continued-brace-offset 0)
+             (setq cperl-brace-offset -4)
+             (setq cperl-brace-imaginary-offset 0)
+             (setq cperl-label-offset -2)
+             (setq debug-line-marker-string "#// DEBUG")))
+
+(add-hook 'makefile-mode-hook
+          '(lambda ()
+             (turn-on-font-lock)
+             (setq makefile-target-colon "::")
+             (setq makefile-macro-assign " = ")
+             (setq makefile-tab-after-target-colon t)
+             (setq makefile-browser-auto-advance-after-selection-p t)
+             (setq makefile-electric-keys t)
+             (setq makefile-use-curly-braces-for-macros-p t)))
+
+(add-hook 'ediff-cleanup-hook
+          '(lambda ()
+             (ediff-janitor t)))
+
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+
+(add-hook 'mouse-track-click-hook 'id-select-double-click-hook)
