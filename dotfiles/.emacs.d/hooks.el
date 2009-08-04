@@ -6,10 +6,7 @@
 			 (cond ((symbol-value 'mark-active)
 					(my-delete-trailing-whitespace (region-beginning)
 												   (region-end)))
-				   (t (my-delete-trailing-whitespace 0 (- (point-max) 1))))))
-;; (add-hook 'before-save-hook
-;; 		  '(lambda ()
-;; 			 (delete-trailing-whitespace)))
+				   (t (delete-trailing-whitespace)))))
 
 (add-hook 'lisp-mode-hook
           '(lambda ()

@@ -20,8 +20,8 @@
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
-(require 'linum)
-(global-linum-mode)
+;(require 'linum)
+;(global-linum-mode)
 
 (global-set-key "\e*" 'new-interactive-lisp)
 (global-set-key "\C-cp" 'select-perl-mode)
