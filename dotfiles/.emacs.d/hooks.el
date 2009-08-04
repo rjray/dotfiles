@@ -2,11 +2,14 @@
           '(lambda () (setq font-lock-maximum-decoration 4)))
 
 (add-hook 'before-save-hook
-      '(lambda ()
-         (cond ((symbol-value 'mark-active)
-            (my-delete-trailing-whitespace (region-beginning)
-                        (region-end)))
-           (t (my-delete-trailing-whitespace 0 (point-max))))))
+		  '(lambda ()
+			 (cond ((symbol-value 'mark-active)
+					(my-delete-trailing-whitespace (region-beginning)
+												   (region-end)))
+				   (t (my-delete-trailing-whitespace 0 (- (point-max) 1))))))
+;; (add-hook 'before-save-hook
+;; 		  '(lambda ()
+;; 			 (delete-trailing-whitespace)))
 
 (add-hook 'lisp-mode-hook
           '(lambda ()

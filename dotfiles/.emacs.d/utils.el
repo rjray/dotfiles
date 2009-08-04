@@ -65,9 +65,9 @@ bindings to use in the edit buffer."
                          (compute-history-menu history-menu-max-items
                                                command-history nil)))))
 
-(add-hook 'activate-menubar-hook 'create-history-menu)
-(add-submenu '()
-          '("History" ["No command history" (message "No command history") t]))
+;(add-hook 'activate-menubar-hook 'create-history-menu)
+;(add-submenu '()
+;          '("History" ["No command history" (message "No command history") t]))
 
 (defun my-delete-trailing-whitespace (begin end)
   "Delete trailing whitespace from all lines in region BEGIN and END."

@@ -20,10 +20,10 @@
 ;; Load my personalized code
 (load "e_init")
 (load "keys")
+(load "utils")
 (load "hooks")
 (load "mode-list")
 (load "autoloads")
-(load "utils")
 
 ;;; Added/updated by emacs
 
