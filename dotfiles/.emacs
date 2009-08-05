@@ -1,7 +1,14 @@
-;; .emacs
+;;; .emacs
 
 (defconst homedir (getenv "HOME") "My home dir, regardless of host.")
 (setq load-path (cons (concat homedir "/.emacs.d") load-path))
+
+;; Libs I want visible at all levels:
+(require 'ack)
+(require 'imenu)
+(require 'iswitch-buffer)
+(require 'recentf)
+(require 'linum)
 
 ;; Run as a server
 (server-mode 1)
@@ -35,6 +42,7 @@
  '(blink-cursor-mode nil)
  '(color-theme-selection "Vim Colors" nil (color-theme))
  '(column-number-mode t)
+ '(fill-column 79)
  '(inhibit-startup-buffer-menu t)
  '(inhibit-startup-echo-area-message "rjray")
  '(inhibit-startup-screen t)

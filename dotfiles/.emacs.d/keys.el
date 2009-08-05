@@ -158,6 +158,13 @@
         (t (untabify 0 (point-max))))
   (save-buffer))
 
+(defun fill-paragraph-or-region ()
+  "If the region is active, call fill-region. Otherwise, fill-paragraph."
+  (interactive)
+  (cond ((symbol-value 'mark-active)
+		 (fill-region (region-beginning) (region-end)))
+		(t (fill-paragraph nil))))
+
 (defun run-perltidy ()
   "Run perltidy on the buffer or region"
   (interactive)

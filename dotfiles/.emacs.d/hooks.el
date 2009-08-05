@@ -2,14 +2,15 @@
           '(lambda () (setq font-lock-maximum-decoration 4)))
 
 (add-hook 'before-save-hook
-		  '(lambda ()
-			 (cond ((symbol-value 'mark-active)
-					(my-delete-trailing-whitespace (region-beginning)
-												   (region-end)))
-				   (t (delete-trailing-whitespace)))))
+          '(lambda ()
+             (cond ((symbol-value 'mark-active)
+                    (my-delete-trailing-whitespace (region-beginning)
+                                                   (region-end)))
+                   (t (delete-trailing-whitespace)))))
 
 (add-hook 'lisp-mode-hook
           '(lambda ()
+             (linum-mode 1)
              (define-key lisp-mode-map "%" 'match-paren)
              (if (and (featurep 'menubar)
                       current-menubar)
@@ -21,6 +22,7 @@
 
 (add-hook 'c-mode-hook
           '(lambda ()
+             (linum-mode 1)
              (turn-on-font-lock)
              (setq c-default-style "bsd")
              (define-key c-mode-map "\C-cs" 'switch-c-mode-spacing)
@@ -30,11 +32,11 @@
              (setq c-basic-offset 4)
              (c-set-offset 'case-label '*)
              (c-set-offset 'statement-case-intro '*)
-             (c-set-offset 'statement-case-open '*)
-             (setq debug-line-marker-string "/* DEBUG */")))
+             (c-set-offset 'statement-case-open '*)))
 
 (add-hook 'csharp-mode-hook
           '(lambda ()
+;            (linum-mode 1)
              (turn-on-font-lock)
              (setq c-default-style "bsd")
              (define-key c-mode-map "\C-cs" 'switch-c-mode-spacing)
@@ -48,6 +50,7 @@
 
 (add-hook 'c++-mode-hook
           '(lambda ()
+             (linum-mode 1)
              (turn-on-font-lock)
              (setq c-default-style "bsd")
              (define-key c++-mode-map "\C-cu" 'update-mod-time)
@@ -55,11 +58,12 @@
              (define-key c++-mode-map "\C-c\C-d" 'delete-all-debug-lines)
              (setq c-basic-offset 4)
              (c-set-offset 'case-label '*)
-             (c-set-offset 'statement-case-intro '*)
-             (setq debug-line-marker-string "// DEBUG")))
+             (c-set-offset 'statement-case-intro '*)))
 
 (add-hook 'cperl-mode-hook
           '(lambda ()
+             (linum-mode 1)
+             (require 'prove)
              (turn-on-font-lock)
              (define-key cperl-mode-map "\C-cf" 'perl-insert-file-hdr)
              (define-key cperl-mode-map "\C-cl" 'perl-insert-lib-hdr)
@@ -73,11 +77,11 @@
              (setq cperl-continued-brace-offset 0)
              (setq cperl-brace-offset -4)
              (setq cperl-brace-imaginary-offset 0)
-             (setq cperl-label-offset -2)
-             (setq debug-line-marker-string "#// DEBUG")))
+             (setq cperl-label-offset -2)))
 
 (add-hook 'makefile-mode-hook
           '(lambda ()
+             (linum-mode 1)
              (turn-on-font-lock)
              (setq makefile-target-colon "::")
              (setq makefile-macro-assign " = ")
@@ -90,6 +94,9 @@
           '(lambda ()
              (ediff-janitor t)))
 
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook
+          '(lambda ()
+             (linum-mode 1)
+             (turn-on-auto-fill)))
 
 (add-hook 'mouse-track-click-hook 'id-select-double-click-hook)

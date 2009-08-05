@@ -3,9 +3,6 @@
 ;;; after keys.el, et al.
 
 (require 'cl)
-(require 'ack)
-(require 'imenu)
-(require 'iswitch-buffer)
 
 (setq-default tab-stop-list
           (mapcar (lambda (x) (* 4 x))
@@ -15,13 +12,9 @@
 (setq default-major-mode 'text-mode)
 (setq delete-auto-save-files t)
 
-(require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
-
-;(require 'linum)
-;(global-linum-mode)
 
 (global-set-key "\e*" 'new-interactive-lisp)
 (global-set-key "\C-cp" 'select-perl-mode)
