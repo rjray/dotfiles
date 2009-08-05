@@ -10,3 +10,6 @@ mtremere () {
 umtremere () {
     df | grep tremere: | awk '{print $1}' | xargs -n 1 -r umount
 }
+
+# Env-vars we don't want in .bash_env
+export RELEASE_TESTING=1

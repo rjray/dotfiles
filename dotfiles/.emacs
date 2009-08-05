@@ -13,6 +13,9 @@
 ;; Run as a server
 (server-mode 1)
 
+;; Line numbers everywhere!
+(global-linum-mode)
+
 ;; turn on font-lock mode
 (when (fboundp 'global-font-lock-mode)
   (global-font-lock-mode t))

@@ -10,7 +10,6 @@
 
 (add-hook 'lisp-mode-hook
           '(lambda ()
-             (linum-mode 1)
              (define-key lisp-mode-map "%" 'match-paren)
              (if (and (featurep 'menubar)
                       current-menubar)
@@ -22,7 +21,6 @@
 
 (add-hook 'c-mode-hook
           '(lambda ()
-             (linum-mode 1)
              (turn-on-font-lock)
              (setq c-default-style "bsd")
              (define-key c-mode-map "\C-cs" 'switch-c-mode-spacing)
@@ -36,7 +34,6 @@
 
 (add-hook 'csharp-mode-hook
           '(lambda ()
-;            (linum-mode 1)
              (turn-on-font-lock)
              (setq c-default-style "bsd")
              (define-key c-mode-map "\C-cs" 'switch-c-mode-spacing)
@@ -50,7 +47,6 @@
 
 (add-hook 'c++-mode-hook
           '(lambda ()
-             (linum-mode 1)
              (turn-on-font-lock)
              (setq c-default-style "bsd")
              (define-key c++-mode-map "\C-cu" 'update-mod-time)
@@ -62,7 +58,6 @@
 
 (add-hook 'cperl-mode-hook
           '(lambda ()
-             (linum-mode 1)
              (require 'prove)
              (turn-on-font-lock)
              (define-key cperl-mode-map "\C-cf" 'perl-insert-file-hdr)
@@ -81,7 +76,6 @@
 
 (add-hook 'makefile-mode-hook
           '(lambda ()
-             (linum-mode 1)
              (turn-on-font-lock)
              (setq makefile-target-colon "::")
              (setq makefile-macro-assign " = ")

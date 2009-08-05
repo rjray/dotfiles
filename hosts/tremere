@@ -2,3 +2,6 @@
 backuphome () {
     rsync -e ssh -auzv --exclude '/Dropbox' --exclude '.Trash' --exclude '.mozilla/firefox/*/Cache' --exclude '/.cache' /home/users/rjray/ /freeagent0/backups/tremere/rjray
 }
+
+# Env vars we don't want in .bash_env
+export RELEASE_TESTING=1

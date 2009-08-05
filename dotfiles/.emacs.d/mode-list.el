@@ -30,6 +30,9 @@
        (list (cons "\\.xs$" 'c-mode))
        (list (cons "\\.y$" 'bison-mode))
 
+       ;; Edit bash-related files in sh-mode
+       (list (cons "\\.bash" 'sh-mode))
+
        ;; Various DTD-related types
        (extensions-list 'dtd-mode
                         '("\\.dcl$" "\\.dec$" "\\.dtd$"
@@ -48,4 +51,4 @@
 (nconc auto-mode-alist '(("/rjray/work/perl5" . cperl-mode)))
 
 (setq interpreter-mode-alist (append interpreter-mode-alist
-				     '(("miniperl" . perl-mode))))
+                     '(("miniperl" . perl-mode))))
