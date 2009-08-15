@@ -1,6 +1,6 @@
 --maximum-line-length=80
 --indent-columns=4
---continuation-indentation=2
+--continuation-indentation=4
 --opening-brace-on-new-line
 --opening-sub-brace-on-new-line
 --paren-tightness=2

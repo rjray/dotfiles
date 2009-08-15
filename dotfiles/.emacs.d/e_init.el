@@ -4,6 +4,16 @@
 
 (require 'cl)
 
+(defadvice cperl-indent-command
+  (around cperl-indent-or-complete)
+
+  "Changes \\[cperl-indent-command] so it autocompletes when at the end of a word."
+  (if (looking-at "\\>")
+      (dabbrev-expand nil)
+    ad-do-it))
+(eval-after-load "cperl-mode"
+  '(progn (require 'dabbrev) (ad-activate 'cperl-indent-command)))
+
 (setq-default tab-stop-list
           (mapcar (lambda (x) (* 4 x))
               '(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)))

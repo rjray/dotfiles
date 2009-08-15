@@ -9,6 +9,7 @@
 (require 'iswitch-buffer)
 (require 'recentf)
 (require 'linum)
+(require 'perlcritic)
 
 ;; Run as a server
 (server-mode 1)
