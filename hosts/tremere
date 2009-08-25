@@ -1,6 +1,6 @@
 # Aliases specific to gangrel
 backuphome () {
-    rsync -e ssh -auzv --exclude '/Dropbox' --exclude '.Trash' --exclude '.mozilla/firefox/*/Cache' --exclude '/.cache' /home/users/rjray/ /freeagent0/backups/tremere/rjray
+    rsync -e ssh -auzv --delete --exclude-from $HOME/.rsync-exclude /home/users/rjray/ tremere:/freeagent0/backups/tremere/rjray
 }
 
 # Env vars we don't want in .bash_env
