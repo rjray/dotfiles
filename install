@@ -10,3 +10,8 @@ if [ -f hosts/${HOSTNAME} ]; then
     echo "Installing hosts/${HOSTNAME} as ${HOME}/.bash-${HOSTNAME}"
     cp hosts/${HOSTNAME} ${HOME}/.bash-${HOSTNAME}
 fi
+
+if [ -f ${HOME}/.dotfile_tags.yml ]; then
+	echo "Processing private-tags expansion (${HOME}/.dotfile_tags.yml)"
+	./expandtags.pl ${HOME}/.dotfile_tags.yml
+fi
