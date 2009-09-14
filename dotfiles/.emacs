@@ -36,6 +36,10 @@
 (load "mode-list")
 (load "autoloads")
 
+;; Load Perforce mode when at work:
+(when (string= system-name "tzimisce")
+  (load "p4"))
+
 ;;; Added/updated by emacs
 
 (custom-set-variables
