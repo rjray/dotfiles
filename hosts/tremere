@@ -4,4 +4,4 @@ backuphome () {
 }
 
 # Env vars we don't want in .bash_env
-export RELEASE_TESTING=1
+export AUTHOR_TESTING=1
