@@ -22,20 +22,22 @@ fi
 # If this is an interactive shell, enable completions
 if test -n "$PS1"; then
     # Init completion, as some of the command-level bits need this
-    . /etc/bash_completion
+    if [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
 
-    # Source desired system-level completion settings
-    for cmd in git subversion; do
-        if [ -f /etc/bash_completion.d/${cmd} ]; then
-	        . /etc/bash_completion.d/${cmd}
-        fi
-    done
-
-    # Source any local completion scripts
-    if [ -d ${HOME}/.bash_completion.d ]; then
-        for file in ${HOME}/.bash_completion.d/*; do
-            . $file
+        # Source desired system-level completion settings
+        for cmd in git subversion; do
+            if [ -f /etc/bash_completion.d/${cmd} ]; then
+	            . /etc/bash_completion.d/${cmd}
+            fi
         done
+
+        # Source any local completion scripts
+        if [ -d ${HOME}/.bash_completion.d ]; then
+            for file in ${HOME}/.bash_completion.d/*; do
+                . $file
+            done
+        fi
     fi
 fi
 
