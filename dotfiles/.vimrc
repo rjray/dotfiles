@@ -37,6 +37,7 @@ map <leader>t :FuzzyFinderTextMate<cr>
 map <leader>b :FuzzyFinderBuffer<cr>
 map <C-n> :wn<CR>
 nmap <C-n><C-n> :set invnumber<cr>
+noremap <Leader>w <C-W><C-W>:res<cr>
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 nnoremap ' `
