@@ -31,3 +31,5 @@ directories if your program contains sources from more than one directory." t ni
   "Run perldb on program FILE in buffer *gud-FILE*.
 The directory containing FILE becomes the initial working directory
 and source-file directory for your debugger." t nil)
+
+(autoload 'yaml-mode "yaml-mode" "YAML Mode" t)

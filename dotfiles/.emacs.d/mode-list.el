@@ -45,6 +45,10 @@
        (extensions-list 'csharp-mode
                         '("\\.cs$" "\\.hs"))
 
+	   ;; YAML mode
+	   (extensions-list 'yaml-mode
+						'("\\.yml$" "\\.yaml$"))
+
        auto-mode-alist))
 
 ;;; Set it so any file edited UNDER ~/work/perl5 is in perl mode. MUST BE LAST
