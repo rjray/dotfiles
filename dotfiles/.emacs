@@ -17,6 +17,9 @@
 ;; Line numbers everywhere!
 (global-linum-mode)
 
+;; Disable auto-saving
+(setq auto-save-default nil)
+
 ;; turn on font-lock mode
 (when (fboundp 'global-font-lock-mode)
   (global-font-lock-mode t))
