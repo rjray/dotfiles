@@ -33,3 +33,5 @@ The directory containing FILE becomes the initial working directory
 and source-file directory for your debugger." t nil)
 
 (autoload 'yaml-mode "yaml-mode" "YAML Mode" t)
+(autoload 'php-mode "php-mode" "PHP Mode" t)
+(autoload 'smarty-mode "smarty-mode" "Smarty Mode" t)

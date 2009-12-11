@@ -49,6 +49,12 @@
 	   (extensions-list 'yaml-mode
 						'("\\.yml$" "\\.yaml$"))
 
+	   ;; PHP mode
+	   (list (cons "\\.php$" 'php-mode))
+
+	   ;; Smarty Mode (PHP templating system)
+	   (list (cons "\\.tpl$" 'smarty-mode))
+
        auto-mode-alist))
 
 ;;; Set it so any file edited UNDER ~/work/perl5 is in perl mode. MUST BE LAST
