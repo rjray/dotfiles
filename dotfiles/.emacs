@@ -20,6 +20,9 @@
 ;; Disable auto-saving
 (setq auto-save-default nil)
 
+(setq-default indent-tabs-mode t)
+(global-set-key (kbd "TAB") 'tab-to-tab-stop)
+
 ;; turn on font-lock mode
 (when (fboundp 'global-font-lock-mode)
   (global-font-lock-mode t))
