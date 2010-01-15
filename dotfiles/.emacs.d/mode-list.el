@@ -9,7 +9,7 @@
       (append
        ;; Perl mode
        (extensions-list 'cperl-mode
-                        '("\\.pm" "\\.PM" "\\.PL" "\\.pl" "\\.al"))
+                        '("\\.pm" "\\.PM" "\\.PL" "\\.pl" "\\.al" "\\.t$"))
 
        ;; Makefiles
        (list (cons "I?[Mm]akefile$" 'makefile-mode))
