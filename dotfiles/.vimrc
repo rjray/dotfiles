@@ -49,6 +49,7 @@ imap <C-Right> <Esc>:bnext<CR>
 map <C-Left> :bprev<CR>
 imap <C-Left> <Esc>:bprev<CR>
 map <C-Del> :bd<CR>
+map <F2> :NERDTreeToggle<CR>
 
 " Enable file-type detection, per-filetype plugins, and per-filetype indent
 filetype plugin indent on
