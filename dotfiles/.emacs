@@ -43,7 +43,7 @@
 (load "autoloads")
 
 ;; Load Perforce mode when at work:
-(when (string= system-name "tzimisce")
+(when (string= system-name "rjray")
   (load "p4"))
 
 ;;; Added/updated by emacs
