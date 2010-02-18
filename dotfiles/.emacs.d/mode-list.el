@@ -9,7 +9,8 @@
       (append
        ;; Perl mode
        (extensions-list 'cperl-mode
-                        '("\\.pm" "\\.PM" "\\.PL" "\\.pl" "\\.al" "\\.t$"))
+                        '("\\.pm" "\\.PM" "\\.PL" "\\.pl" "\\.al"
+                          "\\.t$" "\\.thpl$"))
 
        ;; Makefiles
        (list (cons "I?[Mm]akefile$" 'makefile-mode))
@@ -45,15 +46,15 @@
        (extensions-list 'csharp-mode
                         '("\\.cs$" "\\.hs"))
 
-	   ;; YAML mode
-	   (extensions-list 'yaml-mode
-						'("\\.yml$" "\\.yaml$"))
+       ;; YAML mode
+       (extensions-list 'yaml-mode
+                        '("\\.yml$" "\\.yaml$"))
 
-	   ;; PHP mode
-	   (list (cons "\\.php$" 'php-mode))
+       ;; PHP mode
+       (list (cons "\\.php$" 'php-mode))
 
-	   ;; Smarty Mode (PHP templating system)
-	   (list (cons "\\.tpl$" 'smarty-mode))
+       ;; Smarty Mode (PHP templating system)
+       (list (cons "\\.tpl$" 'smarty-mode))
 
        auto-mode-alist))
 
