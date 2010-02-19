@@ -47,8 +47,13 @@
 
 (global-set-key [(f8)]           (lambda ()
                                    (interactive)
-                                   (count-words-buffer (current-buffer))))
-(global-set-key [(control f8)]   'count-words-region)
+                                   (count-region (point-min) (point-max))))
+(global-set-key [(control f8)]   (lambda ()
+								   (interactive)
+								   (cond ((symbol-value 'mark-active)
+										  (count-region (region-beginning)
+														(region-end)))
+										 (t (message "Region not active.")))))
 
 (global-set-key [(f9)]           'find-file)
 (global-set-key [(control f9)]   'load-library)
