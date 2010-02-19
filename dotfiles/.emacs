@@ -20,6 +20,9 @@
 ;; Disable auto-saving
 (setq auto-save-default nil)
 
+;; No case-folding on searches, please.
+(setq default-case-fold-search nil)
+
 (setq-default indent-tabs-mode t)
 (global-set-key (kbd "TAB") 'tab-to-tab-stop)
 
@@ -43,7 +46,7 @@
 (load "autoloads")
 
 ;; Load Perforce mode when at work:
-(when (string= system-name "rjray")
+(when (string= system-name "rjray.hq.netapp.com")
   (load "p4"))
 
 ;;; Added/updated by emacs
