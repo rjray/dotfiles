@@ -162,8 +162,8 @@
   "If the region is active, call fill-region. Otherwise, fill-paragraph."
   (interactive)
   (cond ((symbol-value 'mark-active)
-		 (fill-region (region-beginning) (region-end)))
-		(t (fill-paragraph nil))))
+         (fill-region (region-beginning) (region-end)))
+        (t (fill-paragraph nil))))
 
 (defun run-perltidy ()
   "Run perltidy on the buffer or region"
@@ -236,3 +236,12 @@
         (setq xml--just-insert-ampersand nil))
     (insert ?&)
     (setq xml--just-insert-ampersand t)))
+
+;;; Hack to swap tab-width between 4 and 8 at whim
+(defun swap-tab-width ()
+  "Swap the tab width between 4 and 8"
+  (interactive)
+  (cond ((= tab-width 4)
+         (setq tab-width 8))
+        (t (setq tab-width 4)))
+  (redraw-display))

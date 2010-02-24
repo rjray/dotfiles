@@ -29,6 +29,7 @@
 (global-set-key "\e*" 'new-interactive-lisp)
 (global-set-key "\C-cp" 'select-perl-mode)
 (global-set-key "\C-cy" 'yow)
+(global-set-key "\C-c\C-i" 'swap-tab-width)
 
 ;; Function-key bindings
 (global-set-key [(f1)]           'other-window)
