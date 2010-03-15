@@ -81,6 +81,7 @@ au! BufRead,BufNewFile *.t :call PerlTestMappings()
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 au! FileType xslt  set shiftwidth=2 tabstop=2 formatoptions=t encoding=utf-8 whichwrap=<,>,h,l
 au! FileType xml   set shiftwidth=2 tabstop=2 formatoptions=t encoding=utf-8 whichwrap=<,>,h,l
+au! FileType html  set shiftwidth=2 tabstop=2 formatoptions=t whichwrap=<,>,h,l
 au FileType make  set noexpandtab
 au FileType text setlocal textwidth=79
 
