@@ -29,6 +29,7 @@
 (global-set-key "\e*" 'new-interactive-lisp)
 (global-set-key "\C-cp" 'select-perl-mode)
 (global-set-key "\C-cy" 'yow)
+(global-set-key "\C-c\C-i" 'swap-tab-width)
 
 ;; Function-key bindings
 (global-set-key [(f1)]           'other-window)
@@ -47,8 +48,13 @@
 
 (global-set-key [(f8)]           (lambda ()
                                    (interactive)
-                                   (count-words-buffer (current-buffer))))
-(global-set-key [(control f8)]   'count-words-region)
+                                   (count-region (point-min) (point-max))))
+(global-set-key [(control f8)]   (lambda ()
+								   (interactive)
+								   (cond ((symbol-value 'mark-active)
+										  (count-region (region-beginning)
+														(region-end)))
+										 (t (message "Region not active.")))))
 
 (global-set-key [(f9)]           'find-file)
 (global-set-key [(control f9)]   'load-library)
