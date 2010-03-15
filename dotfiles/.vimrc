@@ -58,6 +58,11 @@ filetype plugin indent on
 function! PerlMappings()
     noremap <buffer> ,cv :call Coverage()<cr>
     noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
+    if $HOST == "rjray"
+        nmap <C-F6> :%!perltidy --profile=.perltidyrc-netapp<cr>
+    else
+        nmap <C-F6> :%!perltidy<cr>
+    endif
 endfunction
 
 function! PerlTestMappings()
