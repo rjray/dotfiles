@@ -15,9 +15,11 @@ for file in env aliases; do
 done
 
 # If there is a file for this domain, load it
-DOMAIN=$(domainname)
-if [ -f ${HOME}/.bash-${DOMAIN} ]; then
-	. ${HOME}/.bash-${DOMAIN}
+if [ -f /bin/domainname ]; then
+    DOMAIN=$(domainname)
+    if [ -f ${HOME}/.bash-${DOMAIN} ]; then
+	    . ${HOME}/.bash-${DOMAIN}
+    fi
 fi
 
 # If there is a file for this host, load it
