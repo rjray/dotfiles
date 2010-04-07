@@ -45,6 +45,12 @@
 (load "mode-list")
 (load "autoloads")
 
+;; SLIME
+(setq inferior-lisp-program "/usr/bin/sbcl")
+(require 'slime)
+(slime-setup)
+
+
 ;; Load Perforce mode when at work:
 (when (string= system-name "rjray.hq.netapp.com")
   (load "p4"))
