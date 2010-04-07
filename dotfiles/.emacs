@@ -69,6 +69,7 @@
  '(inhibit-startup-buffer-menu t)
  '(inhibit-startup-echo-area-message "rjray")
  '(inhibit-startup-screen t)
+ '(indent-tabs-mode nil)
  '(make-backup-files nil)
  '(menu-bar-mode t)
  '(save-place t nil (saveplace))

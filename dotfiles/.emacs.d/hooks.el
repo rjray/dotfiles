@@ -1,12 +1,12 @@
 (add-hook 'font-lock-mode-hook
           '(lambda () (setq font-lock-maximum-decoration 4)))
 
-(add-hook 'before-save-hook
-          '(lambda ()
-             (cond ((symbol-value 'mark-active)
-                    (my-delete-trailing-whitespace (region-beginning)
-                                                   (region-end)))
-                   (t (delete-trailing-whitespace)))))
+;; (add-hook 'before-save-hook
+;;           '(lambda ()
+;;              (cond ((symbol-value 'mark-active)
+;;                     (my-delete-trailing-whitespace (region-beginning)
+;;                                                    (region-end)))
+;;                    (t (delete-trailing-whitespace)))))
 
 (add-hook 'lisp-mode-hook
           '(lambda ()
@@ -67,7 +67,7 @@
 			 ;(define-key cperl-mode-map (kbd "TAB") 'tab-to-tab-stop)
              (local-set-key "%" 'self-insert-command)
 			 (c-set-offset 'inline-open 0)
-			 (setq tab-width 4 indent-tabs-mode t)
+			 (setq tab-width 4)
              ;(setq cperl-tab-always-indent t)
              (setq cperl-tab-to-comment t)
              (setq cperl-indent-level 4)
