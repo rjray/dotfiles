@@ -365,7 +365,7 @@ max_nests = 6
 lib_sections = NAME | SYNOPSIS | DESCRIPTION | SUBROUTINES/METHODS | DIAGNOSTICS | BUGS | SUPPORT | LICENSE AND COPYRIGHT | AUTHOR
 
 # The sections to require for programs (separated by qr/\s* [|] \s*/xms).
-# script_sections = 
+script_sections = NAME | USAGE | DESCRIPTION | REQUIRED ARGUMENTS | OPTIONS | EXIT STATUS | BUGS | SUPPORT | LICENSE AND COPYRIGHT | AUTHOR
 
 # The origin of sections to use.
 # Valid values: book, book_first_edition, module_starter_pbp, module_starter_pbp_0_0_3.
