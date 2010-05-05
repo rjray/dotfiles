@@ -49,6 +49,13 @@ if test -n "$PS1"; then
     fi
 fi
 
+# Do we have any stand-alone "command" files?
+if [ -d ${HOME}/.bash ]; then
+    for file in ${HOME}/.bash/*; do
+        . $file
+    done
+fi
+
 export PATH=${HOME}/bin:${PATH}
 export PS1='\[\e]0;\h: \w\007\]{ \h: \! } '
 # Stripped-down un-ornamented prompt for consoles:
