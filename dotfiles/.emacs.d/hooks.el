@@ -69,6 +69,7 @@
 			 (c-set-offset 'inline-open 0)
 			 (setq tab-width 4)
              ;(setq cperl-tab-always-indent t)
+             (setq cperl-indent-parens-as-block t)
              (setq cperl-tab-to-comment t)
              (setq cperl-indent-level 4)
              (setq cperl-continued-statement-offset 4)
