@@ -1,11 +1,17 @@
 # .bashrc
 
+shopt -s no_empty_cmd_completion
+
 # Source global definitions
 for file in /etc/bashrc; do
     if [ -f $file ]; then
         . $file
     fi
 done
+
+# Set the basic path here (not in .bash_env) so that it can be added to by
+# per-host files. I just prefer $PATH to be here rather than .bash_env.
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/games
 
 # Account settings (global across hosts, order is important)
 for file in env aliases; do
