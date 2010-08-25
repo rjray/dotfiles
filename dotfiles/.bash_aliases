@@ -16,6 +16,7 @@ alias lsd='ls -d .[0-9a-zA-Z]*'
 alias po=popd
 alias pu=pushd
 alias rehash='hash -r'
+alias Rsync='rsync -e ssh -auzv'
 alias sds=dirs
 alias uncom=gunzip
 alias words='wc -w'
