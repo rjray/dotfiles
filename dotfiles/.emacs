@@ -10,6 +10,10 @@
 (require 'recentf)
 (require 'linum)
 (require 'perlcritic)
+(require 'browse-kill-ring)
+
+;; Browse the kill-ring with C-c k:
+(global-set-key (kbd "C-c k") 'browse-kill-ring)
 
 ;; Run as a server
 (server-mode 1)
@@ -23,6 +27,7 @@
 ;; No case-folding on searches, please.
 (setq default-case-fold-search nil)
 
+;; Tab-related twiddling
 (setq-default indent-tabs-mode t)
 (global-set-key (kbd "TAB") 'tab-to-tab-stop)
 
@@ -49,7 +54,6 @@
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (require 'slime)
 (slime-setup)
-
 
 ;; Load Perforce mode when at work:
 (when (string= system-name "rjray.hq.netapp.com")
