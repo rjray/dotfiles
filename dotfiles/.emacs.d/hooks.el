@@ -11,7 +11,6 @@
 (add-hook 'lisp-mode-hook
           '(lambda ()
              (define-key lisp-mode-map "%" 'match-paren)
-             (define-key lisp-mode-map (kbd "TAB") 'indent-for-tab-command)
              (if (and (featurep 'menubar)
                       current-menubar)
                  (progn
