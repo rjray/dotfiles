@@ -56,6 +56,9 @@
        ;; Smarty Mode (PHP templating system)
        (list (cons "\\.tpl$" 'smarty-mode))
 
+       ;; Clojure mode
+       (list (cons "\\.clj$" 'clojure-mode))
+
        auto-mode-alist))
 
 ;;; Set it so any file edited UNDER ~/work/perl5 is in perl mode. MUST BE LAST

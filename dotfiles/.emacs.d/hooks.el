@@ -11,6 +11,7 @@
 (add-hook 'lisp-mode-hook
           '(lambda ()
              (define-key lisp-mode-map "%" 'match-paren)
+             (define-key lisp-mode-map (kbd "TAB") 'indent-for-tab-command)
              (if (and (featurep 'menubar)
                       current-menubar)
                  (progn
@@ -64,10 +65,10 @@
              (define-key cperl-mode-map "\C-cl" 'perl-insert-lib-hdr)
              (define-key cperl-mode-map "\C-cs" 'perl-insert-sub-hdr)
              (define-key cperl-mode-map "\C-c%" 'match-paren)
-			 ;(define-key cperl-mode-map (kbd "TAB") 'tab-to-tab-stop)
+             ;(define-key cperl-mode-map (kbd "TAB") 'tab-to-tab-stop)
              (local-set-key "%" 'self-insert-command)
-			 (c-set-offset 'inline-open 0)
-			 (setq tab-width 4)
+             (c-set-offset 'inline-open 0)
+             (setq tab-width 4)
              ;(setq cperl-tab-always-indent t)
              (setq cperl-indent-parens-as-block t)
              (setq cperl-tab-to-comment t)
@@ -98,3 +99,5 @@
              (turn-on-auto-fill)))
 
 (add-hook 'mouse-track-click-hook 'id-select-double-click-hook)
+
+(add-hook 'clojure-mode-hook 'clojure-test-maybe-enable)
