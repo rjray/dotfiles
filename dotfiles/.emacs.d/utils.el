@@ -77,3 +77,23 @@ bindings to use in the edit buffer."
     (while (re-search-forward "[ \t\r]+$" nil t)
       (replace-match ""))
     (widen)))
+
+;; From Michał Marczyk, via
+;; http://stackoverflow.com/questions/3887362/clojure-functions-for-emacs
+(defmacro -> (e &rest es)
+  (if (and (consp es) (not (consp (cdr es))))
+      (if (consp (car es))
+          `(,(caar es) ,e ,@(cdar es))
+        `(,(car es) ,e))
+    (if (consp es)
+        `(-> (-> ,e ,(car es)) ,@(cdr es))
+      e)))
+
+(defmacro ->> (e &rest es)
+  (if (and (consp es) (not (consp (cdr es))))
+      (if (consp (car es))
+          `(,@(car es) ,e)
+        `(,(car es) ,e))
+    (if (consp es)
+        `(->> (->> ,e ,(car es)) ,@(cdr es))
+      e)))
