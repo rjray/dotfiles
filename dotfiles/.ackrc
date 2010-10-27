@@ -1,3 +1,4 @@
 --type-add=php=.tpl
 --type-add=perl=.thpl
 --type-set=config=.conf,.ini
+--type-set=clojure=.clj
