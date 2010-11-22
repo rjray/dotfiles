@@ -50,6 +50,9 @@
 (load "mode-list")
 (load "autoloads")
 
+;;; cperl-mode is preferred to perl-mode
+(defalias 'perl-mode 'cperl-mode)
+
 ;; SLIME
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (require 'slime)
