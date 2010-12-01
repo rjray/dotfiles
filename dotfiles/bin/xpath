@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use XML::XPath;
+use XML::XPath::XMLParser;
+
+my ($filename, $xpath) = @ARGV;
+
+my $xp = XML::XPath->new(filename => $filename);
+
+my $nodeset = $xp->find($xpath);    # find all paragraphs
+
+my $found = 0;
+foreach my $node ($nodeset->get_nodelist)
+{
+    $found++;
+    print "FOUND\n\n", XML::XPath::XMLParser::as_string($node), "\n\n";
+}
+
+unless ($found)
+{
+    print "No XML found matching xpath '$xpath'\n";
+}
+
+exit;

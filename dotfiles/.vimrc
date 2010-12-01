@@ -78,14 +78,27 @@ function! Coverage()
     end
 endfunction
 
+function! XMLMappings()
+    set shiftwidth=2 tabstop=2 formatoptions=t encoding=utf-8 whichwrap=<,>,h,l
+    noremap <leader>xf :%!xmllint --format %<cr>
+    noremap <leader>xp :call Xpath()<cr>
+endfunction
+
+function! Xpath()
+    let filename = bufname("%")
+    let xpath    = input("Enter xpath expression: ")
+    let command  = "xpath '" . filename . "' '" . xpath . "'"
+    echo system(command)
+endfunction
+
 " Auto-commands based on file-type and/or buffer life-cycle
 au! FileType gitcommit setlocal textwidth=79 noexpandtab 
 au! FileType java   set shiftwidth=4 tabstop=4
 au! FileType perl          :call PerlMappings()
+au! FileType xml           :call XMLMappings()
+au! FileType xslt          :call XMLMappings()
 au! BufRead,BufNewFile *.t :call PerlTestMappings()
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-au! FileType xslt  set shiftwidth=2 tabstop=2 formatoptions=t encoding=utf-8 whichwrap=<,>,h,l
-au! FileType xml   set shiftwidth=2 tabstop=2 formatoptions=t encoding=utf-8 whichwrap=<,>,h,l
 au! FileType html  set shiftwidth=2 tabstop=2 formatoptions=t whichwrap=<,>,h,l
 au FileType make  set noexpandtab
 au FileType text setlocal textwidth=79
