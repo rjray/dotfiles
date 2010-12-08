@@ -1,19 +1,22 @@
 ;;; .emacs
 
 (defconst homedir (getenv "HOME") "My home dir, regardless of host.")
-(setq load-path (cons (concat homedir "/.emacs.d") load-path))
+(add-to-list 'load-path (concat homedir "/.emacs.d"))
 
 ;; Libs I want visible at all levels:
 (require 'ack)
 (require 'imenu)
 (require 'iswitch-buffer)
-(require 'recentf)
 (require 'linum)
 (require 'perlcritic)
 (require 'browse-kill-ring)
+(require 'lacarte)
 
-;; Browse the kill-ring with C-c k:
-(global-set-key (kbd "C-c k") 'browse-kill-ring)
+;; Fire up recent-file minor-mode
+(require 'recentf)
+(setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
+(setq recentf-max-menu-items 25)
+(recentf-mode 1)
 
 ;; Run as a server
 (server-mode 1)
@@ -55,8 +58,10 @@
 
 ;; SLIME
 (setq inferior-lisp-program "/usr/bin/sbcl")
+(eval-after-load "slime"
+  '(progn
+     (slime-setup '(slime-repl))))
 (require 'slime)
-(slime-setup)
 
 ;; Load Perforce mode when at work:
 (when (string= system-name "rjray.hq.netapp.com")
