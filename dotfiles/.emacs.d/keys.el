@@ -245,3 +245,12 @@
          (setq tab-width 8))
         (t (setq tab-width 4)))
   (redraw-display))
+
+;; Things from EmacsWiki.org
+(defun recentf-open-files-compl ()
+  (interactive)
+  (let* ((tocpl (mapcar (lambda (x) (cons (file-name-nondirectory x) x))
+                        recentf-list))
+         (fname (completing-read "File name: " tocpl nil nil)))
+    (when fname
+      (find-file (cdr (assoc-string fname tocpl))))))

@@ -22,14 +22,15 @@
 (setq default-major-mode 'text-mode)
 (setq delete-auto-save-files t)
 
-(recentf-mode 1)
-(setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
 (global-set-key "\e*" 'new-interactive-lisp)
 (global-set-key "\C-cp" 'select-perl-mode)
 (global-set-key "\C-cy" 'yow)
 (global-set-key "\C-c\C-i" 'swap-tab-width)
+(global-set-key "\C-x\C-r" 'recentf-open-files-compl)
+;; Browse the kill-ring with C-c k:
+(global-set-key (kbd "C-c k") 'browse-kill-ring)
 
 ;; Function-key bindings
 (global-set-key [(f1)]           'other-window)
@@ -59,7 +60,6 @@
 (global-set-key [(f9)]           'find-file)
 (global-set-key [(control f9)]   'load-library)
 
-(global-set-key [(f10)]          'execute-extended-command)
 (global-set-key [(control f10)]  'compile)
 
 ;; Meta-key combinations
@@ -77,3 +77,7 @@
 (global-set-key [(home)] 'home)
 (global-set-key [(end)] 'end)
 
+;; LaCarte bindings
+(global-set-key [?\e ?\M-x] 'lacarte-execute-command)
+(global-set-key [?\M-`]     'lacarte-execute-menu-command)
+(global-set-key [f10]       'lacarte-execute-menu-command)
