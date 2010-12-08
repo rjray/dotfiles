@@ -91,6 +91,27 @@ function! Xpath()
     echo system(command)
 endfunction
 
+" Say a message
+function! Say(msg)
+    echohl IncSearch
+    echo a:msg
+    echohl None
+endfunction
+
+" Copy full buffer to OS clipboard.
+function! CopyAll()
+    normal mzggVG"+y'z
+    call Say("Copied.")
+endfunction
+command A call CopyAll()
+
+" Delete buffer contents and Paste from OS clipboard.
+function! PasteFromClipboard()
+    normal ggVGd"+p1Gdd
+    call Say("Pasted.")
+endfunction
+command B call PasteFromClipboard()
+
 " Auto-commands based on file-type and/or buffer life-cycle
 au! FileType gitcommit setlocal textwidth=79 noexpandtab 
 au! FileType java   set shiftwidth=4 tabstop=4
