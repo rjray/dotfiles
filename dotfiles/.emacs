@@ -11,6 +11,7 @@
 (require 'perlcritic)
 (require 'browse-kill-ring)
 (require 'lacarte)
+(require 'gist)
 
 ;; Fire up recent-file minor-mode
 (require 'recentf)
