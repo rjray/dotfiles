@@ -8,40 +8,7 @@
 ;;                                                    (region-end)))
 ;;                    (t (delete-trailing-whitespace)))))
 
-(add-hook 'lisp-mode-hook
-          '(lambda ()
-             (highlight-parentheses-mode t)
-             (paredit-mode t)
-             (define-key lisp-mode-map "%" 'match-paren)
-             (if (and (featurep 'menubar)
-                      current-menubar)
-                 (progn
-                   ;; make a local copy of the menubar, so our modes don't
-                   ;; change the global menubar
-                   (set-buffer-menubar current-menubar)
-                   (add-submenu nil emacs-lisp-mode-menubar-menu)))))
-
 (add-hook 'c-mode-hook
-          '(lambda ()
-             (turn-on-font-lock)
-             (setq c-default-style "bsd")
-             (define-key c-mode-map "\C-cs" 'switch-c-mode-spacing)
-             (define-key c-mode-map "\C-cu" 'update-mod-time)
-             (define-key c-mode-map "\C-c\C-h" 'c-toggle-hungry-state)
-             (define-key c-mode-map "\C-c\C-d" 'delete-all-debug-lines)
-             (setq c-basic-offset 4)
-             (c-set-offset 'case-label '*)
-             (c-set-offset 'statement-case-intro '*)
-             (c-set-offset 'statement-case-open '*)))
-
-(add-hook 'clojure-mode-hook 'clojure-test-maybe-enable)
-(add-hook 'clojure-mode-hook
-          '(lambda ()
-             (highlight-parentheses-mode t)
-             (paredit-mode t)
-             (slime-mode t)))
-
-(add-hook 'csharp-mode-hook
           '(lambda ()
              (turn-on-font-lock)
              (setq c-default-style "bsd")
@@ -65,6 +32,14 @@
              (c-set-offset 'case-label '*)
              (c-set-offset 'statement-case-intro '*)))
 
+(add-hook 'clojure-mode-hook 'clojure-test-maybe-enable)
+(add-hook 'clojure-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "RET") 'electrify-return-if-match)
+             (highlight-parentheses-mode t)
+             (paredit-mode t)
+             (slime-mode t)))
+
 (add-hook 'cperl-mode-hook
           '(lambda ()
              (require 'prove)
@@ -87,14 +62,42 @@
              (setq cperl-brace-imaginary-offset 0)
              (setq cperl-label-offset -2)))
 
+(add-hook 'csharp-mode-hook
+          '(lambda ()
+             (turn-on-font-lock)
+             (setq c-default-style "bsd")
+             (define-key c-mode-map "\C-cs" 'switch-c-mode-spacing)
+             (define-key c-mode-map "\C-cu" 'update-mod-time)
+             (define-key c-mode-map "\C-c\C-h" 'c-toggle-hungry-state)
+             (define-key c-mode-map "\C-c\C-d" 'delete-all-debug-lines)
+             (setq c-basic-offset 4)
+             (c-set-offset 'case-label '*)
+             (c-set-offset 'statement-case-intro '*)
+             (c-set-offset 'statement-case-open '*)))
+
 (add-hook 'ediff-cleanup-hook
           '(lambda ()
              (ediff-janitor t)))
 
 (add-hook 'emacs-lisp-mode-hook
           '(lambda ()
+             (local-set-key (kbd "RET") 'electrify-return-if-match)
              (highlight-parentheses-mode t)
              (paredit-mode t)))
+
+(add-hook 'lisp-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "RET") 'electrify-return-if-match)
+             (highlight-parentheses-mode t)
+             (paredit-mode t)
+             (define-key lisp-mode-map "%" 'match-paren)
+             (if (and (featurep 'menubar)
+                      current-menubar)
+                 (progn
+                   ;; make a local copy of the menubar, so our modes don't
+                   ;; change the global menubar
+                   (set-buffer-menubar current-menubar)
+                   (add-submenu nil emacs-lisp-mode-menubar-menu)))))
 
 (add-hook 'makefile-mode-hook
           '(lambda ()
@@ -107,6 +110,12 @@
              (setq makefile-use-curly-braces-for-macros-p t)))
 
 (add-hook 'mouse-track-click-hook 'id-select-double-click-hook)
+
+(add-hook 'slime-repl-mode-hook
+          '(lambda ()
+             (paredit-mode t)
+             (define-key slime-repl-mode-map
+               (read-kbd-macro paredit-backward-delete-key) nil)))
 
 (add-hook 'text-mode-hook
           '(lambda ()
