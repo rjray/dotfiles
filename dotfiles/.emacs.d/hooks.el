@@ -10,6 +10,8 @@
 
 (add-hook 'lisp-mode-hook
           '(lambda ()
+             (highlight-parentheses-mode t)
+             (paredit-mode t)
              (define-key lisp-mode-map "%" 'match-paren)
              (if (and (featurep 'menubar)
                       current-menubar)
@@ -31,6 +33,13 @@
              (c-set-offset 'case-label '*)
              (c-set-offset 'statement-case-intro '*)
              (c-set-offset 'statement-case-open '*)))
+
+(add-hook 'clojure-mode-hook 'clojure-test-maybe-enable)
+(add-hook 'clojure-mode-hook
+          '(lambda ()
+             (highlight-parentheses-mode t)
+             (paredit-mode t)
+             (slime-mode t)))
 
 (add-hook 'csharp-mode-hook
           '(lambda ()
@@ -78,6 +87,15 @@
              (setq cperl-brace-imaginary-offset 0)
              (setq cperl-label-offset -2)))
 
+(add-hook 'ediff-cleanup-hook
+          '(lambda ()
+             (ediff-janitor t)))
+
+(add-hook 'emacs-lisp-mode-hook
+          '(lambda ()
+             (highlight-parentheses-mode t)
+             (paredit-mode t)))
+
 (add-hook 'makefile-mode-hook
           '(lambda ()
              (turn-on-font-lock)
@@ -88,15 +106,9 @@
              (setq makefile-electric-keys t)
              (setq makefile-use-curly-braces-for-macros-p t)))
 
-(add-hook 'ediff-cleanup-hook
-          '(lambda ()
-             (ediff-janitor t)))
+(add-hook 'mouse-track-click-hook 'id-select-double-click-hook)
 
 (add-hook 'text-mode-hook
           '(lambda ()
              (linum-mode 1)
              (turn-on-auto-fill)))
-
-(add-hook 'mouse-track-click-hook 'id-select-double-click-hook)
-
-(add-hook 'clojure-mode-hook 'clojure-test-maybe-enable)

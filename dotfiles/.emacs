@@ -2,6 +2,8 @@
 
 (defconst homedir (getenv "HOME") "My home dir, regardless of host.")
 (add-to-list 'load-path (concat homedir "/.emacs.d"))
+(add-to-list 'load-path (concat homedir "/.emacs.d/slime"))
+(add-to-list 'load-path (concat homedir "/.emacs.d/slime/contrib"))
 
 ;; Libs I want visible at all levels:
 (require 'ack)
@@ -12,6 +14,8 @@
 (require 'browse-kill-ring)
 (require 'lacarte)
 (require 'gist)
+(require 'highlight-parentheses)
+(require 'paredit)
 
 ;; Fire up recent-file minor-mode
 (require 'recentf)
@@ -58,11 +62,16 @@
 (defalias 'perl-mode 'cperl-mode)
 
 ;; SLIME
-(setq inferior-lisp-program "/usr/bin/sbcl")
-(eval-after-load "slime"
-  '(progn
-     (slime-setup '(slime-repl))))
 (require 'slime)
+(slime-setup '(slime-fancy slime-asdf))
+(unload-feature 'slime-autodoc t)
+(setq slime-multiprocessing t)
+(set-language-environment "UTF-8")
+(setq slime-net-coding-system 'utf-8-unix)
+(setq slime-lisp-implementations
+      '((clisp   ("/usr/bin/clisp" "-K full"))
+        (sbcl    ("/usr/bin/sbcl"))))
+(setf slime-default-lisp 'sbcl)
 
 ;; Load Perforce mode when at work:
 (when (string= system-name "rjray.hq.netapp.com")
