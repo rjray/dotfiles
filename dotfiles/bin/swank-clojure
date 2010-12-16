@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Simple wrapper to launch swank-clojure from out of the git repo
+
+java -cp "$HOME/.clojure/*:$HOME/work/clojure/swank-clojure/src:$HOME/work/clojure" clojure.main -e "(use 'swank.swank)(apply -main *command-line-args*)" /dev/null "$@"
