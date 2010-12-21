@@ -2,6 +2,7 @@
 severity = 1
 # force = 0
 # only = 0
+# allow-unsafe = 0
 # profile-strictness = warn
 # color = 0
 # pager = 
@@ -16,6 +17,7 @@ severity = 1
 # color-severity-medium = 
 # color-severity-low = 
 # color-severity-lowest = 
+# program-extensions = 
 
 # Use `List::MoreUtils::any' instead of `grep' in boolean context.
 [BuiltinFunctions::ProhibitBooleanGrep]
@@ -354,6 +356,20 @@ max_nests = 6
 # maximum_violations_per_document    = no_limit
 
 
+# Provide text to display with your pod links.
+[Documentation::RequirePodLinksIncludeText]
+# set_themes                         = core maintenance
+# add_themes                         =
+# severity                           = 2
+# maximum_violations_per_document    = no_limit
+
+# Allow external sections without text.
+# allow_external_sections = 1
+
+# Allow internal sections without text.
+# allow_internal_sections = 1
+
+
 # Organize your POD into the customary sections.
 [Documentation::RequirePodSections]
 # set_themes                         = core maintenance pbp
@@ -563,6 +579,20 @@ script_sections = NAME | USAGE | DESCRIPTION | REQUIRED ARGUMENTS | OPTIONS | EX
 # maximum_violations_per_document    = no_limit
 
 
+# Ban modules that aren't blessed by your shop.
+[Modules::ProhibitEvilModules]
+# set_themes                         = bugs core
+# add_themes                         =
+# severity                           = 5
+# maximum_violations_per_document    = no_limit
+
+# The names of or patterns for modules to forbid.
+# modules = Class::ISA {Found use of Class::ISA. This module is deprecated by the Perl 5 Porters.} Pod::Plainer {Found use of Pod::Plainer. This module is deprecated by the Perl 5 Porters.} Shell {Found use of Shell. This module is deprecated by the Perl 5 Porters.} Switch {Found use of Switch. This module is deprecated by the Perl 5 Porters.}
+
+# A file containing names of or patterns for modules to forbid.
+# modules_file = 
+
+
 # Minimize complexity in code that is outside of subroutines.
 [Modules::ProhibitExcessMainComplexity]
 # set_themes                         = complexity core maintenance
@@ -733,11 +763,55 @@ script_sections = NAME | USAGE | DESCRIPTION | REQUIRED ARGUMENTS | OPTIONS | EX
 # exception_source = 
 
 
+# Split long regexps into smaller `qr//' chunks.
+[RegularExpressions::ProhibitComplexRegexes]
+# set_themes                         = core maintenance pbp
+# add_themes                         =
+# severity                           = 3
+# maximum_violations_per_document    = no_limit
+
+# The maximum number of characters to allow in a regular expression.
+# Minimum value 1. No maximum.
+# max_characters = 60
+
+
+# Use named character classes instead of explicit character lists.
+[RegularExpressions::ProhibitEnumeratedClasses]
+# set_themes                         = core cosmetic pbp unicode
+# add_themes                         =
+# severity                           = 1
+# maximum_violations_per_document    = no_limit
+
+
+# Use character classes for literal meta-characters instead of escapes.
+[RegularExpressions::ProhibitEscapedMetacharacters]
+# set_themes                         = core cosmetic pbp
+# add_themes                         =
+# severity                           = 1
+# maximum_violations_per_document    = no_limit
+
+
 # Use `eq' or hash instead of fixed-pattern regexps.
 [RegularExpressions::ProhibitFixedStringMatches]
 # set_themes                         = core pbp performance
 # add_themes                         =
 # severity                           = 2
+# maximum_violations_per_document    = no_limit
+
+
+# Use `[abc]' instead of `a|b|c'.
+[RegularExpressions::ProhibitSingleCharAlternation]
+# set_themes                         = core pbp performance
+# add_themes                         =
+# severity                           = 1
+# maximum_violations_per_document    = no_limit
+
+
+# Only use a capturing group if you plan to use the captured value.
+[RegularExpressions::ProhibitUnusedCapture]
+# set_themes                         = core maintenance pbp
+# add_themes                         =
+# severity                           = 3
 # maximum_violations_per_document    = no_limit
 
 
