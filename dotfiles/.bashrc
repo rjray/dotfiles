@@ -65,6 +65,6 @@ fi
 export PATH=${HOME}/bin:${PATH}
 export PS1='\[\e]0;\h: \w\007\]{ \h: \! } '
 # Stripped-down un-ornamented prompt for consoles:
-if [ "x${TERM}" == "xlinux" ]; then
+if [ "x${TERM}" == "xlinux" -o "x${TERM}" == "xdumb" ]; then
     export PS1='{ \h: \! } '
 fi
