@@ -35,7 +35,6 @@
 (add-hook 'clojure-mode-hook 'clojure-test-maybe-enable)
 (add-hook 'clojure-mode-hook
           '(lambda ()
-             (local-set-key (kbd "RET") 'electrify-return-if-match)
              (highlight-parentheses-mode t)
              (paredit-mode t)
              (slime-mode t)))
@@ -81,13 +80,11 @@
 
 (add-hook 'emacs-lisp-mode-hook
           '(lambda ()
-             (local-set-key (kbd "RET") 'electrify-return-if-match)
              (highlight-parentheses-mode t)
              (paredit-mode t)))
 
 (add-hook 'lisp-mode-hook
           '(lambda ()
-             (local-set-key (kbd "RET") 'electrify-return-if-match)
              (highlight-parentheses-mode t)
              (paredit-mode t)
              (define-key lisp-mode-map "%" 'match-paren)
