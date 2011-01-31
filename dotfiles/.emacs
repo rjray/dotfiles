@@ -20,8 +20,18 @@
 ;; Fire up recent-file minor-mode
 (require 'recentf)
 (setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
-(setq recentf-max-menu-items 25)
+(setq recentf-max-menu-items 40)
 (recentf-mode 1)
+
+;; Set up and enable IDO mode
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-create-new-buffer 'always)
+(setq ido-file-extensions-order
+      '(".org" ".txt" ".pm" ".pl" ".clj" ".emacs" ".xml" ".el"))
+(setq ido-ignore-extensions t)
+(ido-mode 1)
 
 ;; Run as a server
 (server-mode 1)
