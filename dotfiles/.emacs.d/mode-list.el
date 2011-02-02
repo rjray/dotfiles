@@ -59,6 +59,9 @@
        ;; Clojure mode
        (list (cons "\\.clj$" 'clojure-mode))
 
+       ;; Wikimedia mode, specifically for ItsAllText emacsclient buffers
+       (list (cons ".*wiki.*\\.txt" 'mediawiki-mode))
+
        auto-mode-alist))
 
 ;;; Set it so any file edited UNDER ~/work/perl5 is in perl mode. MUST BE LAST

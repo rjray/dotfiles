@@ -39,3 +39,5 @@ and source-file directory for your debugger." t nil)
 (autoload 'clojure-mode "clojure-mode" "Clojure mode" t)
 (autoload 'clojure-test-mode "clojure-test-mode" "Clojure test mode" t)
 (autoload 'clojure-test-maybe-enable "clojure-test-mode" "" t)
+
+(autoload 'mediawiki-mode "mediawiki" "MediaWiki mode" t)
