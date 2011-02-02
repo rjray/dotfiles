@@ -108,6 +108,15 @@
 
 (add-hook 'mouse-track-click-hook 'id-select-double-click-hook)
 
+(add-hook 'server-done-hook 'delete-frame)
+(add-hook 'server-done-hook (lambda nil (kill-buffer nil)))
+
+(add-hook 'server-switch-hook
+          (lambda nil
+            (let ((server-buf (current-buffer)))
+              (bury-buffer)
+              (switch-to-buffer-other-frame server-buf))))
+
 (add-hook 'slime-repl-mode-hook
           '(lambda ()
              (paredit-mode t)
