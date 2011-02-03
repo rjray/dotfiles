@@ -31,11 +31,6 @@
 (global-set-key (kbd "C-c k") 'browse-kill-ring)
 
 ;; Function-key bindings
-(global-set-key [(f1)]           'other-window)
-
-(global-set-key [(f4)]           'delete-window)
-(global-set-key [(control f4)]   'delete-other-windows)
-
 (global-set-key [(f5)]           'search-forward-regexp)
 (global-set-key [(control f5)]   'search-backward-regexp)
 
