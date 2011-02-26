@@ -9,7 +9,7 @@
       (append
        ;; Perl mode
        (extensions-list 'cperl-mode
-                        '("\\.pm" "\\.PM" "\\.PL" "\\.pl" "\\.al"
+                        '("\\.pm$" "\\.PM$" "\\.PL$" "\\.pl$" "\\.al$"
                           "\\.t$" "\\.thpl$"))
 
        ;; Makefiles
@@ -19,9 +19,10 @@
        (extensions-list 'sgml-mode
                         '("\\.html?" "\\.HTML?" "\\.sgml?"))
 
-       ;; XML
-       (extensions-list 'xml-mode
-                        '("\\.rdf" "\\.xsd" "\\.xslt?"))
+       ;; NXML
+       (extensions-list 'nxml-mode
+                        '("\\.rdf$" "\\.xsd$" "\\.xslt?$" "\\.xml$"
+                          "\\.xhtml?$" "\\.dbx$" "\\.page$"))
 
        ;; Tcl/Tk
        (extensions-list 'tcl-mode

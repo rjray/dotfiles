@@ -41,3 +41,5 @@ and source-file directory for your debugger." t nil)
 (autoload 'clojure-test-maybe-enable "clojure-test-mode" "" t)
 
 (autoload 'mediawiki-mode "mediawiki" "MediaWiki mode" t)
+
+(autoload 'xml-mode "nxml" "XML Editing Mode" t)

@@ -14,6 +14,9 @@
 (eval-after-load "cperl-mode"
   '(progn (require 'dabbrev) (ad-activate 'cperl-indent-command)))
 
+(eval-after-load 'rng-loc
+  '(add-to-list 'rng-schema-locating-files "~/.schema/schemas.xml"))
+
 (setq-default tab-stop-list
           (mapcar (lambda (x) (* 4 x))
               '(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)))
