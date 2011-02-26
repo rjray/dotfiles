@@ -2,3 +2,4 @@
 --type-add=perl=.thpl
 --type-set=config=.conf,.ini
 --type-set=clojure=.clj
+--color-lineno=black
