@@ -12,9 +12,6 @@
                         '("\\.pm$" "\\.PM$" "\\.PL$" "\\.pl$" "\\.al$"
                           "\\.t$" "\\.thpl$"))
 
-       ;; Makefiles
-       (list (cons "I?[Mm]akefile$" 'makefile-mode))
-
        ;; The PSGML mode is applied to several
        (extensions-list 'sgml-mode
                         '("\\.html?" "\\.HTML?" "\\.sgml?"))
