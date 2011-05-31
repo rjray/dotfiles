@@ -11,7 +11,10 @@ done
 
 # Set the basic path here (not in .bash_env) so that it can be added to by
 # per-host files. I just prefer $PATH to be here rather than .bash_env.
-export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/games
+UNAME=$(uname)
+if [ "x$UNAME" != "xDarwin" ]; then
+    export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/games
+fi
 
 # Account settings (global across hosts, order is important)
 for file in env aliases; do
