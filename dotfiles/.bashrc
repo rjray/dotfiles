@@ -9,9 +9,13 @@ for file in /etc/bashrc; do
     fi
 done
 
+# Because MacOS is so very different in some (annoying) ways, note the
+# machine type for use here and in .bash_env:
+export UNAME=$(uname)
+
 # Set the basic path here (not in .bash_env) so that it can be added to by
-# per-host files. I just prefer $PATH to be here rather than .bash_env.
-UNAME=$(uname)
+# per-host files. I just prefer $PATH to be here rather than .bash_env. But
+# don't do this for MacOS, because the default $PATH is set up through plists.
 if [ "x$UNAME" != "xDarwin" ]; then
     export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/games
 fi
