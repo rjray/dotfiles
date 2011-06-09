@@ -5,6 +5,8 @@
 (add-to-list 'load-path (concat homedir "/.emacs.d/slime"))
 (add-to-list 'load-path (concat homedir "/.emacs.d/slime/contrib"))
 
+(defconst uname (or (getenv "UNAME") "Linux") "Output of 'uname'")
+
 ;; Libs I want visible at all levels:
 (require 'ack)
 (require 'imenu)
@@ -78,6 +80,14 @@
 (setq slime-multiprocessing t)
 (set-language-environment "UTF-8")
 (setq slime-net-coding-system 'utf-8-unix)
+(cond ((string= uname "Darwin")
+       (setq slime-lisp-implementations
+             '((clisp   ("/usr/local/bin/clisp" "-K full"))
+               (sbcl    ("/usr/local/bin/sbcl")))))
+      (t
+       (setq slime-lisp-implementations
+             '((clisp   ("/usr/bin/clisp" "-K full"))
+               (sbcl    ("/usr/bin/sbcl"))))))
 (setq slime-lisp-implementations
       '((clisp   ("/usr/bin/clisp" "-K full"))
         (sbcl    ("/usr/bin/sbcl"))))
