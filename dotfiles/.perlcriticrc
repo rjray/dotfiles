@@ -340,6 +340,23 @@ max_nests = 6
 # maximum_violations_per_document    = no_limit
 
 
+# Check your spelling.
+[-Documentation::PodSpelling]
+# set_themes                         = core cosmetic pbp
+# add_themes                         =
+# severity                           = 1
+# maximum_violations_per_document    = no_limit
+
+# The command to invoke to check spelling.
+# spell_command = aspell list
+
+# The words to not consider as misspelled.
+# stop_words = 
+
+# A file containing words to not consider as misspelled.
+# stop_words_file = 
+
+
 # The `=head1 NAME' section should match the package.
 [Documentation::RequirePackageMatchesPodName]
 # set_themes                         = core cosmetic
@@ -381,7 +398,7 @@ max_nests = 6
 lib_sections = NAME | SYNOPSIS | DESCRIPTION | SUBROUTINES/METHODS | DIAGNOSTICS | BUGS | SUPPORT | LICENSE AND COPYRIGHT | AUTHOR
 
 # The sections to require for programs (separated by qr/\s* [|] \s*/xms).
-script_sections = NAME | USAGE | DESCRIPTION | REQUIRED ARGUMENTS | OPTIONS | EXIT STATUS | BUGS | SUPPORT | LICENSE AND COPYRIGHT | AUTHOR
+script_sections = NAME | SYNOPSIS | DESCRIPTION | REQUIRED ARGUMENTS | OPTIONS | EXIT STATUS | BUGS | SUPPORT | LICENSE AND COPYRIGHT | AUTHOR
 
 # The origin of sections to use.
 # Valid values: book, book_first_edition, module_starter_pbp, module_starter_pbp_0_0_3.
@@ -401,6 +418,9 @@ script_sections = NAME | USAGE | DESCRIPTION | REQUIRED ARGUMENTS | OPTIONS | EX
 
 # Don't complain about die or warn if the message ends in a newline.
 # allow_messages_ending_with_newlines = 1
+
+# Don't complain about die or warn in main::, unless in a subroutine.
+# allow_in_main_unless_in_subroutine = 0
 
 
 # You can't depend upon the value of `$@'/`$EVAL_ERROR' to tell whether an `eval' failed.
@@ -528,6 +548,14 @@ script_sections = NAME | USAGE | DESCRIPTION | REQUIRED ARGUMENTS | OPTIONS | EX
 # exclude_functions = 
 
 
+# Write `open $fh, q{<:encoding(UTF-8)}, $filename;' instead of `open $fh, q{{<:utf8}, $filename;'.
+[InputOutput::RequireEncodingWithUTF8Layer]
+# set_themes                         = bugs core security
+# add_themes                         =
+# severity                           = 5
+# maximum_violations_per_document    = no_limit
+
+
 # Do not use `format'.
 [Miscellanea::ProhibitFormats]
 # set_themes                         = core maintenance pbp
@@ -576,6 +604,14 @@ script_sections = NAME | USAGE | DESCRIPTION | REQUIRED ARGUMENTS | OPTIONS | EX
 # set_themes                         = bugs core
 # add_themes                         =
 # severity                           = 4
+# maximum_violations_per_document    = no_limit
+
+
+# Avoid putting conditional logic around compile-time includes.
+[Modules::ProhibitConditionalUseStatements]
+# set_themes                         = bugs core
+# add_themes                         =
+# severity                           = 3
 # maximum_violations_per_document    = no_limit
 
 
@@ -940,6 +976,20 @@ minimum_regex_length_to_complain_about = 40
 # maximum_violations_per_document    = no_limit
 
 
+# Prevent unused private subroutines.
+[Subroutines::ProhibitUnusedPrivateSubroutines]
+# set_themes                         = core maintenance
+# add_themes                         =
+# severity                           = 3
+# maximum_violations_per_document    = no_limit
+
+# Pattern that determines what a private subroutine is.
+# private_name_regex = \b_\w+\b
+
+# Subroutines matching the private name regex to allow under this policy.
+# allow = 
+
+
 # Prevent access to private subs in other packages.
 [Subroutines::ProtectPrivateSubs]
 # set_themes                         = core maintenance
@@ -1166,6 +1216,10 @@ minimum_regex_length_to_complain_about = 40
 
 # Should anything to the right of a "=>" be allowed?.
 # allow_to_the_right_of_a_fat_comma = 1
+
+# Names of subroutines that create constants.
+# Values that are always included: Readonly, Readonly::Array, Readonly::Hash, Readonly::Scalar, const.
+# constant_creator_subroutines = 
 
 
 # Don't mix numeric operators with string operands, or vice-versa.
