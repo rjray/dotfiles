@@ -20,7 +20,6 @@ export CVS_RSH=ssh
 export EDITOR=/usr/bin/vim
 export FULLNAME='Randy J. Ray'
 export HOST=$(hostname)
-export JAVA_HOME=/opt/java
 export LD_LIBRARY_PATH=/opt/java/jre/lib/i386/client:/opt/java/jre/lib/i386/native_threads:/opt/java/jre/lib/i386:/usr/local/lib:.
 export LESS="-MdqC"
 export LESSCHARSET=utf-8
