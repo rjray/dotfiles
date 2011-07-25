@@ -22,6 +22,7 @@ set smartcase
 set title
 set scrolloff=3
 set visualbell
+set background=light
 
 " Variable assignments
 let mapleader = ","
