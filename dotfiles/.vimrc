@@ -7,7 +7,7 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 set viminfo='1000,f1,<500
-set nohlsearch
+set hlsearch
 set grepprg=ack
 set grepformat=%f:%l:%m
 set backspace=start,indent,eol
@@ -16,7 +16,7 @@ set hidden
 set showcmd
 set fileformat=unix
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,full
 set ignorecase 
 set smartcase
 set title
@@ -38,6 +38,7 @@ map <leader>t :FuzzyFinderTextMate<cr>
 map <leader>b :FuzzyFinderBuffer<cr>
 map <C-n> :wn<CR>
 nmap <C-n><C-n> :set invnumber<cr>
+nmap <silent> <BS> :nohlsearch<CR>
 noremap <Leader>w <C-W><C-W>:res<cr>
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
@@ -124,6 +125,16 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 au! FileType html  set shiftwidth=2 tabstop=2 formatoptions=t whichwrap=<,>,h,l
 au FileType make  set noexpandtab
 au FileType text setlocal textwidth=79
+augroup HelpInTabs
+    au!
+    au BufEnter *.txt call HelpInNewTab()
+
+    function! HelpInNewTab()
+        if &buftype == 'help'
+            execute "normal \<C-W>T"
+        endif
+    endfunction
+augroup END
 
 " Conditional stuff
 if has("gui_running")     " Running under gvim/GUI
