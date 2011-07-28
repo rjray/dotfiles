@@ -43,3 +43,7 @@ and source-file directory for your debugger." t nil)
 (autoload 'mediawiki-mode "mediawiki" "MediaWiki mode" t)
 
 (autoload 'xml-mode "nxml" "XML Editing Mode" t)
+
+(autoload 'perlcritic        "perlcritic" "" t)
+(autoload 'perlcritic-region "perlcritic" "" t)
+(autoload 'perlcritic-mode   "perlcritic" "" t)

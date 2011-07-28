@@ -70,6 +70,8 @@
 
 ;;; cperl-mode is preferred to perl-mode
 (defalias 'perl-mode 'cperl-mode)
+(eval-after-load "cperl-mode"
+  '(add-hook 'cperl-mode-hook 'perlcritic-mode))
 
 ;; SLIME
 (require 'slime)
@@ -91,6 +93,9 @@
 ;; Load Perforce mode when at work:
 (when (string= system-name "rjray.hq.netapp.com")
   (load "p4"))
+
+;;enable narrowing
+(put 'narrow-to-region 'disabled nil)
 
 ;;; Added/updated by emacs
 
