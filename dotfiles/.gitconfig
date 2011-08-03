@@ -11,7 +11,7 @@
 	user = rjray
 	token = GITHUBTOKEN
 [core]
-	excludesfile = /home/users/rjray/.gitexcludes
+	excludesfile = /Users/rjray/.gitexcludes
 [pager]
 	status = no
 	log = no
@@ -29,6 +29,6 @@
     lm = log master..
     llm = log -p master..
     b = branch
-    pu = !"git fetch origin -v; git fetch source -v; git merge source/master"
     up = pull --rebase origin master
     pom = push origin master
+    hist = log --all --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
