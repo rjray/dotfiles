@@ -70,8 +70,6 @@
 
 ;;; cperl-mode is preferred to perl-mode
 (defalias 'perl-mode 'cperl-mode)
-(eval-after-load "cperl-mode"
-  '(add-hook 'cperl-mode-hook 'perlcritic-mode))
 
 ;; SLIME
 (require 'slime)
