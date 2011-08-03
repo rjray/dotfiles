@@ -23,6 +23,7 @@ set title
 set scrolloff=3
 set visualbell
 set background=light
+set ruler
 
 " Variable assignments
 let mapleader = ","
