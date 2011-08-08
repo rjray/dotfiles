@@ -78,4 +78,6 @@ fi
 
 # Added by perlbrew
 
-source /Users/rjray/perl5/perlbrew/etc/bashrc
+if [ -f ${HOME}/perl5/perlbrew/etc/bashrc ]; then
+    source ${HOME}/perl5/perlbrew/etc/bashrc
+fi
