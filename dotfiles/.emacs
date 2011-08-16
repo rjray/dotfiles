@@ -95,6 +95,10 @@
 ;;enable narrowing
 (put 'narrow-to-region 'disabled nil)
 
+(if (boundp 'cua-mode)
+    (cua-mode nil)
+  t)
+
 ;;; Added/updated by emacs
 
 (custom-set-variables
