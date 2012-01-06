@@ -1414,6 +1414,14 @@ minimum_regex_length_to_complain_about = 40
 # maximum_violations_per_document    = no_limit
 
 
+# Do not write ` my $foo .= 'bar'; '.
+[Variables::ProhibitAugmentedAssignmentInDeclaration]
+# set_themes                         = bugs core
+# add_themes                         =
+# severity                           = 4
+# maximum_violations_per_document    = no_limit
+
+
 # Do not write ` my $foo = $bar if $baz; '.
 [Variables::ProhibitConditionalDeclarations]
 # set_themes                         = bugs core
