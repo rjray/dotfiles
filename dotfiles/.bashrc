@@ -60,6 +60,12 @@ if test -n "$PS1"; then
             done
         fi
     fi
+
+    export PS1='\[\e]0;\h: \w\007\]{ \h: \! } '
+    # Stripped-down un-ornamented prompt for consoles:
+    if [ "x${TERM}" == "xlinux" -o "x${TERM}" == "xdumb" ]; then
+        export PS1='% '
+    fi
 fi
 
 # Do we have any stand-alone "command" files?
@@ -70,11 +76,6 @@ if [ -d ${HOME}/.bash ]; then
 fi
 
 export PATH=${HOME}/bin:${PATH}
-export PS1='\[\e]0;\h: \w\007\]{ \h: \! } '
-# Stripped-down un-ornamented prompt for consoles:
-if [ "x${TERM}" == "xlinux" -o "x${TERM}" == "xdumb" ]; then
-    export PS1='{ \h: \! } '
-fi
 
 # Added by perlbrew
 
