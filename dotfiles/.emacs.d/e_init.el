@@ -2,8 +2,6 @@
 ;;; anything not written by emacs' custom-mode itself. This should be loaded
 ;;; after keys.el, et al.
 
-(require 'cl)
-
 (defadvice cperl-indent-command
   (around cperl-indent-or-complete)
 
@@ -22,10 +20,8 @@
               '(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)))
 (setq-default tab-width 4)
 
-(setq default-major-mode 'text-mode)
 (setq delete-auto-save-files t)
 
-(global-set-key "\e*" 'new-interactive-lisp)
 (global-set-key [?\C-.]
                 (lambda ()
                   (interactive)
@@ -62,8 +58,6 @@
 (global-set-key [(f9)]           'find-file)
 (global-set-key [(control f9)]   'load-library)
 
-(global-set-key [(control f10)]  'compile)
-
 ;; Meta-key combinations
 (global-set-key [(meta z)]       (lambda ()
                                    (interactive)
@@ -78,8 +72,3 @@
 (global-set-key [(insert)] 'overwrite-mode)
 (global-set-key [(home)] 'home)
 (global-set-key [(end)] 'end)
-
-;; LaCarte bindings
-(global-set-key [?\e ?\M-x] 'lacarte-execute-command)
-(global-set-key [?\M-`]     'lacarte-execute-menu-command)
-(global-set-key [f10]       'lacarte-execute-menu-command)

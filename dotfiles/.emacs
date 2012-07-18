@@ -12,7 +12,6 @@
 (require 'linum)
 (require 'perlcritic)
 (require 'browse-kill-ring)
-(require 'lacarte)
 (require 'gist)
 (require 'highlight-parentheses)
 (require 'paredit)
@@ -58,7 +57,7 @@
 
 ;; default to better frame titles
 (setq frame-title-format
-      (concat  "%b - emacs@" system-name))
+      (concat "%b - emacs@" system-name))
 
 ;; Load my personalized code
 (load "e_init")
@@ -87,10 +86,6 @@
              '((clisp   ("/usr/bin/clisp" "-K full"))
                (sbcl    ("/usr/bin/sbcl"))))))
 (setf slime-default-lisp 'sbcl)
-
-;; Load Perforce mode when at work:
-(when (string= system-name "rjray.hq.netapp.com")
-  (load "p4"))
 
 ;;enable narrowing
 (put 'narrow-to-region 'disabled nil)

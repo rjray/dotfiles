@@ -40,19 +40,9 @@
        ;; TT mode
        (list (cons "\\.tt$" 'tt-mode))
 
-       ;; C# Files
-       (extensions-list 'csharp-mode
-                        '("\\.cs$" "\\.hs"))
-
        ;; YAML mode
        (extensions-list 'yaml-mode
                         '("\\.yml$" "\\.yaml$"))
-
-       ;; PHP mode
-       (list (cons "\\.php$" 'php-mode))
-
-       ;; Smarty Mode (PHP templating system)
-       (list (cons "\\.tpl$" 'smarty-mode))
 
        ;; Clojure mode
        (list (cons "\\.clj$" 'clojure-mode))

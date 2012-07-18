@@ -61,19 +61,6 @@
              (setq cperl-brace-imaginary-offset 0)
              (setq cperl-label-offset -2)))
 
-(add-hook 'csharp-mode-hook
-          '(lambda ()
-             (turn-on-font-lock)
-             (setq c-default-style "bsd")
-             (define-key c-mode-map "\C-cs" 'switch-c-mode-spacing)
-             (define-key c-mode-map "\C-cu" 'update-mod-time)
-             (define-key c-mode-map "\C-c\C-h" 'c-toggle-hungry-state)
-             (define-key c-mode-map "\C-c\C-d" 'delete-all-debug-lines)
-             (setq c-basic-offset 4)
-             (c-set-offset 'case-label '*)
-             (c-set-offset 'statement-case-intro '*)
-             (c-set-offset 'statement-case-open '*)))
-
 (add-hook 'ediff-cleanup-hook
           '(lambda ()
              (ediff-janitor t)))
@@ -125,5 +112,4 @@
 
 (add-hook 'text-mode-hook
           '(lambda ()
-             (linum-mode 1)
              (turn-on-auto-fill)))
