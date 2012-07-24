@@ -52,6 +52,10 @@
 (when (fboundp 'global-font-lock-mode)
   (global-font-lock-mode t))
 
+;; Turn OFF CUA mode. Dunno who's brilliant idea enabling that by default was.
+(when (fboundp 'cua-mode)
+  (cua-mode -1))
+
 ;; enable visual feedback on selections
 ;(setq transient-mark-mode t)
 
@@ -67,8 +71,10 @@
 (load "mode-list")
 (load "autoloads")
 
-;;; cperl-mode is preferred to perl-mode
+;; cperl-mode is preferred to perl-mode
 (defalias 'perl-mode 'cperl-mode)
+;; Don't care for typing out "yes" and "no" all the time...
+(defalias 'yes-or-no-p 'y-or-no-p)
 
 ;; SLIME
 (require 'slime)

@@ -35,12 +35,22 @@
 ;; Browse the kill-ring with C-c k:
 (global-set-key (kbd "C-c k") 'browse-kill-ring)
 
-;; Function-key bindings
-(global-set-key [(f5)]           'search-forward-regexp)
-(global-set-key [(control f5)]   'search-backward-regexp)
+(global-set-key "\C-w"
+                (lambda (arg)
+                  (interactive "p")
+                  (cond ((symbol-value 'mark-active)
+                         (kill-region (region-beginning) (region-end)))
+                        (t (backward-kill-word arg)))))
 
-(global-set-key [(f6)]           'query-replace)
-(global-set-key [(control f6)]   'run-perltidy)
+(global-set-key "\C-x\C-m" 'execute-extended-command)
+(global-set-key "\C-c\C-m" 'execute-extended-command)
+
+;; Function-key bindings
+(global-set-key [(f5)]           'call-last-kbd-macro)
+(global-set-key [(control f5)]   'edit-last-kbd-macro)
+
+(global-set-key [(f6)]           'search-forward-regexp)
+(global-set-key [(control f6)]   'search-backward-regexp)
 
 (global-set-key [(f7)]           'fill-paragraph-or-region)
 (global-set-key [(control f7)]   'untab-buffer)
