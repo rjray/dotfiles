@@ -61,7 +61,25 @@ if test -n "$PS1"; then
         fi
     fi
 
-    export PS1='\[\e]0;\h: \w\007\]{ \h: \! } '
+    RED="\[\e[0;31m\]"
+    YELLOW="\[\e[0;33m\]"
+    GREEN="\[\e[0;32m\]"
+    NORMAL="\[\e[0m\]"
+    function parse_git_in_rebase {
+        [[ -d .git/rebase-apply ]] && echo " REBASING"
+    }
+    function parse_git_dirty {
+        [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+    }
+    function parse_git_branch {
+        branch=$(git branch 2> /dev/null | grep "*" | sed -e s/^..//g)
+        if [[ -z ${branch} ]]; then
+            return
+        fi
+        echo " ("${branch}$(parse_git_dirty)$(parse_git_in_rebase)") "
+    }
+
+    export PS1="\[\e]0;\h: \w\007\]{ \h: \! $GREEN\$(parse_git_branch)$NORMAL} "
     # Stripped-down un-ornamented prompt for consoles:
     if [ "x${TERM}" == "xlinux" -o "x${TERM}" == "xdumb" ]; then
         export PS1='% '
