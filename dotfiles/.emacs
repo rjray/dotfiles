@@ -74,7 +74,7 @@
 ;; cperl-mode is preferred to perl-mode
 (defalias 'perl-mode 'cperl-mode)
 ;; Don't care for typing out "yes" and "no" all the time...
-(defalias 'yes-or-no-p 'y-or-no-p)
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; SLIME
 (require 'slime)
