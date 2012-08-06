@@ -76,7 +76,7 @@ if test -n "$PS1"; then
         if [[ -z ${branch} ]]; then
             return
         fi
-        echo " ("${branch}$(parse_git_dirty)$(parse_git_in_rebase)") "
+        echo "("${branch}$(parse_git_dirty)$(parse_git_in_rebase)") "
     }
 
     export PS1="\[\e]0;\h: \w\007\]{ \h: \! $GREEN\$(parse_git_branch)$NORMAL} "
