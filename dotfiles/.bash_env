@@ -1,3 +1,7 @@
+# For some reason, $HOSTNAME is coming in as the FQDN. I prefer the short
+# name, so force it.
+export HOSTNAME=$(hostname -s)
+
 if [ "x$UNAME" != "xDarwin" ]; then
     unset LC_ALL
     export LANG=us.UTF-8
