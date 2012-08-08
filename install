@@ -3,7 +3,7 @@ rsync -auv dotfiles/ ~
 lesskey lesskey.txt
 
 if [ -z "${HOSTNAME}" ]; then
-    HOSTNAME=$(hostname)
+    HOSTNAME=$(hostname -s)
 fi
 
 if [ -f hosts/${HOSTNAME} ]; then

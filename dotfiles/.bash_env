@@ -16,10 +16,9 @@ if [ "x$UNAME" != "xDarwin" ]; then
 fi
 
 export ACK_COLOR_FILENAME=underline
-export CVS_RSH=ssh
 export EDITOR=/usr/bin/vim
 export FULLNAME='Randy J. Ray'
-export HOST=$(hostname)
+export HOST=$(hostname -s)
 export LD_LIBRARY_PATH=/opt/java/jre/lib/i386/client:/opt/java/jre/lib/i386/native_threads:/opt/java/jre/lib/i386:/usr/local/lib:.
 export LESS="-MdqC"
 export LESSCHARSET=utf-8
@@ -27,4 +26,3 @@ export MANPAGER=less
 export MANPATH=/usr/man:/usr/local/man:/usr/share/man:${HOME}/bin/man:/opt/java/man:${MANPATH}
 export NAME="Randy J. Ray"
 export PAGER=/usr/bin/less
-export SVN_EDITOR=vi
