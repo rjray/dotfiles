@@ -1,0 +1,8 @@
+# Stuff specific to ventrue
+backuphome () {
+    rsync -e ssh -auzv --delete --exclude-from $HOME/.rsync-exclude /Users/rjray/ tremere:/freeagent0/backups/ventrue/rjray
+}
+
+# Move /usr/local/bin to the front for the brew-added elements. Don't
+# completely overwrite $PATH, because OS X set it up initially.
+export PATH=/usr/local/bin:$PATH
