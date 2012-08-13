@@ -41,9 +41,12 @@ As mentioned previously, the file `install` owes its roots to Marcel
 Grünauer, but I have added two things to it that were not in the original:
 
 *   If there is a file under the `hosts` directory that matches the (short)
-    name of this host, I install it in ~ as `.bash-NAME`. There is login in
+    name of this host, I install it in ~ as `.bash-NAME`. There is logic in
     `.bashrc` that looks for such a file and sources it if found. This is
-    where I keep stuff that should actually be different between hosts.
+    where I keep stuff that should actually be different between hosts. (In
+    fact, I also look for per-domain files and source those as well, but I
+    only use that feature at work, and the contents of that file would not
+    be appropriate to keep on a public repo.)
 *   If there is a file called `dotfile_tags.yml` in ~, then it is passed to
     the `expandtags.pl` script. The file is simple YAML, and it just defines
     basic substitutions/expansions for "tags" in files from this repo. You
