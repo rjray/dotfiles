@@ -99,4 +99,5 @@ export PATH=${HOME}/bin:${PATH}
 
 if [ -f ${HOME}/perl5/perlbrew/etc/bashrc ]; then
     source ${HOME}/perl5/perlbrew/etc/bashrc
+    export MANPATH=$(perl -MConfig -e 'print "$Config{installman1dir}:$Config{installman3dir}"'):$MANPATH
 fi
