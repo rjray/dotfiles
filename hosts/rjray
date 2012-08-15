@@ -1,2 +1,7 @@
 # Stuff specific to work desktop
 export PATH=/sbin:/usr/sbin:$PATH
+
+# Incompatibilities with Python libraries:
+post-review() {
+    python /usr/software/rats/bin/post-review $*
+}
