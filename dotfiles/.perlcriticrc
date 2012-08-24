@@ -670,17 +670,6 @@ script_sections = NAME | SYNOPSIS | DESCRIPTION | REQUIRED ARGUMENTS | OPTIONS |
 # maximum_violations_per_document    = no_limit
 
 
-# Put source-control keywords in every file.
-[-Miscellanea::RequireRcsKeywords]
-# set_themes                         = core cosmetic pbp
-# add_themes                         =
-# severity                           = 2
-# maximum_violations_per_document    = no_limit
-
-# The keywords to require in all files.
-# keywords = 
-
-
 # Export symbols via `@EXPORT_OK' or `%EXPORT_TAGS' instead of `@EXPORT'.
 [Modules::ProhibitAutomaticExportation]
 # set_themes                         = bugs core
