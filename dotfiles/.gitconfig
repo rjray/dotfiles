@@ -22,7 +22,7 @@
     ci = commit -v
     cia = commit -v -a
     co = checkout
-    l = log
+    l = log --name-status
     ll = log -p
     lt = log trunk..
     llt = log -p trunk..
