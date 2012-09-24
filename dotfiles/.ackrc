@@ -1,5 +1,6 @@
 --type-add=php=.tpl
 --type-add=perl=.thpl
+--type-add=lisp=.el
 --type-set=config=.conf,.ini
 --type-set=clojure=.clj
 --color-lineno=black
