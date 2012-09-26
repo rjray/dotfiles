@@ -11,7 +11,7 @@
     user = rjray
     token = GITHUBTOKEN
 [core]
-    excludesfile = /Users/rjray/.gitexcludes
+    excludesfile = $HOME/.gitexcludes
 [pager]
     status = no
     log = no
