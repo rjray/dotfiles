@@ -1,48 +1,58 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 use strict;
 use warnings;
+use autodie qw(open close);
 
+use Carp qw(croak);
 use File::Spec;
 
 use YAML::Syck;
 
 my $home = $ENV{HOME};
-die "USAGE: $0 FILE\n" unless my $file = shift;
-
-unless (File::Spec->file_name_is_absolute($file))
+my $file = shift;
+if (! $file)
 {
-	$file = File::Spec->catfile($home, $file);
-}
-unless (-f $file && -r $file)
-{
-	die "File '$file' does not exist or is not readable, stopped";
+    die "USAGE: $0 FILE\n";
 }
 
+if (! File::Spec->file_name_is_absolute($file))
+{
+    $file = File::Spec->catfile($home, $file);
+}
+if  (! (-f $file && -r $file))
+{
+    croak "File '$file' does not exist or is not readable, stopped";
+}
 my $config = LoadFile $file;
 
-foreach my $target (sort keys %$config)
+# Set up the match-pattern for env vars
+my $envpat = join q{|}, map { '\$' . $_ } (keys %ENV);
+
+foreach my $target (sort keys %{$config})
 {
-	my $tfile = File::Spec->catfile($home, $target);
-	my @keys = sort keys %{$config->{$target}};
-	printf "Expanding %d tag%s in %s\n",
-		scalar(@keys), ($#keys ? 's' : ''), $tfile;
+    my $tfile = File::Spec->catfile($home, $target);
+    my @keys = sort keys %{$config->{$target}};
+    printf "Expanding %d tag%s in %s\n",
+        scalar(@keys), ($#keys ? 's' : q{}), $tfile;
 
-	my $pat = join('|', @keys);
-	open(my $ifh, '<', $tfile) or die "Error opening $tfile: $!";
-	open(my $ofh, '>', "$tfile.new") or die "Error opening $tfile.new: $!";
+    my $pat = join q{|}, @keys;
+    open my $ifh, '<', $tfile;
+    open my $ofh, '>', "$tfile.new";
 
-	while (defined($_ = <$ifh>))
-	{
-		s/($pat)/$config->{$target}->{$1}/g;
-		print $ofh $_;
-	}
+    while (defined($_ = <$ifh>))
+    {
+        # Do env vars first, to catch the leading $
+        s/($envpat)/$ENV{substr $1, 1}/g;
+        s/($pat)/$config->{$target}->{$1}/g;
+        print {$ofh} $_;
+    }
 
-	close($ofh);
-	close($ifh);
-	print "Moving $tfile.new to $tfile\n";
-	unlink $tfile;
-	rename "$tfile.new", $tfile;
+    close $ofh;
+    close $ifh;
+    print "Moving $tfile.new to $tfile\n";
+    unlink $tfile;
+    rename "$tfile.new", $tfile;
 }
 
 exit 0;
