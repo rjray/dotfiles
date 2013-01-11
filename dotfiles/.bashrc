@@ -31,13 +31,13 @@ done
 if [ -f /bin/domainname ]; then
     DOMAIN=$(domainname)
     if [ -f ${HOME}/.bash-${DOMAIN} ]; then
-	    . ${HOME}/.bash-${DOMAIN}
+        . ${HOME}/.bash-${DOMAIN}
     fi
 fi
 
 # If there is a file for this host, load it
 if [ -f ${HOME}/.bash-${HOSTNAME} ]; then
-	. ${HOME}/.bash-${HOSTNAME}
+    . ${HOME}/.bash-${HOSTNAME}
 fi
 
 # If this is an interactive shell, enable completions
@@ -49,7 +49,7 @@ if test -n "$PS1"; then
         # Source desired system-level completion settings
         for cmd in git subversion; do
             if [ -f /etc/bash_completion.d/${cmd} ]; then
-	            . /etc/bash_completion.d/${cmd}
+                . /etc/bash_completion.d/${cmd}
             fi
         done
 
@@ -80,6 +80,9 @@ if test -n "$PS1"; then
     }
 
     export PS1="\[\e]0;\h: \w\007\]{ \h: \! $GREEN\$(parse_git_branch)$NORMAL} "
+    if [ "x${NO_GIT_PROMPT}" != "x" ]; then
+        export PS1="{ \h: \! } "
+    fi
     # Stripped-down un-ornamented prompt for consoles:
     if [ "x${TERM}" == "xlinux" -o "x${TERM}" == "xdumb" ]; then
         export PS1='% '
