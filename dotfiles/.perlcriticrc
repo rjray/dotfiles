@@ -38,6 +38,18 @@ severity = 1
 # commentedcoderegex = \$[A-Za-z_].*=
 
 
+# Prohibit loading of debugging modules like Data::Dumper
+[Bangs::ProhibitDebuggingModules]
+# set_themes                         = bangs maintenance
+# add_themes                         =
+# severity                           = 4
+# maximum_violations_per_document    = no_limit
+
+# Module names which are considered to be banned debugging modules.
+# Values that are always included: DDP, DDS, Data::Dump, Data::Dump::Filtered, Data::Dump::Streamer, Data::Dump::Trace, Data::Dumper, Data::Dumper::Concise, Data::Dumper::Concise::Sugar, Data::Dumper::EasyOO, Data::Dumper::Names, Data::Dumper::Simple, Data::PrettyPrintObjects, Data::Printer, Data::Skeleton, Data::TreeDumper, Devel::Dwarn.
+# debugging_modules =
+
+
 # Don't use XXX, TODO, or FIXME.
 [Bangs::ProhibitFlagComments]
 # set_themes                         = bangs maintenance
@@ -391,7 +403,7 @@ max_nests = 6
 # maximum_violations_per_document    = no_limit
 
 # The permitted postfix controls.
-# Valid values: for, foreach, if, unless, until, while.
+# Valid values: for, foreach, if, unless, until, when, while.
 # allow = 
 
 # The exempt flow control functions.
@@ -745,6 +757,9 @@ script_sections = NAME | SYNOPSIS | DESCRIPTION | REQUIRED ARGUMENTS | OPTIONS |
 
 # Don't require programs to contain a package statement.
 # exempt_scripts = 1
+
+# Allow the specified modules to be imported outside a package.
+# allow_import_of =
 
 
 # Package declaration must match filename.
