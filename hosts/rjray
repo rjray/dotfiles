@@ -3,5 +3,6 @@ export PATH=/sbin:/usr/sbin:$PATH
 
 # Incompatibilities with Python libraries:
 post-review() {
-    python /usr/software/rats/bin/post-review $*
+    cwd=$(pwd)
+    ssh cyclsvl "cd $cwd; /usr/software/rats/bin/post-review $*"
 }
