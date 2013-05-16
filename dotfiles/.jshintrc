@@ -1,0 +1,21 @@
+{
+    "debug": true,
+    "forin": true,
+    "eqnull": true,
+    "noarg": true,
+    "noempty": true,
+    "eqeqeq": true,
+    "boss": true,
+    "loopfunc": true,
+    "evil": true,
+    "laxbreak": true,
+    "bitwise": true,
+    "strict": true,
+    "undef": true,
+    "unused": true,
+    "curly": true,
+    "nonew": true,
+    "browser": true,
+    "jquery": true,
+    "devel": true
+}
