@@ -1,8 +1,13 @@
 # Stuff specific to work desktop
-export PATH=/sbin:/usr/sbin:$PATH
+export PERLBREW_ROOT=/opt/perlbrew
+export PATH=/opt/perlbrew/bin:/sbin:/usr/sbin:$PATH
 
 # Incompatibilities with Python libraries:
 post-review() {
     cwd=$(pwd)
     ssh cyclsvl "cd $cwd; /usr/software/rats/bin/post-review $*"
 }
+
+if [ -f ${PERLBREW_ROOT}/etc/bashrc ]; then
+    source ${PERLBREW_ROOT}/etc/bashrc
+fi
