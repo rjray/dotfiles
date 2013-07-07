@@ -23,7 +23,6 @@ export ACK_COLOR_FILENAME=underline
 export EDITOR=/usr/bin/vim
 export FULLNAME='Randy J. Ray'
 export HOST=$(hostname -s)
-export LD_LIBRARY_PATH=/opt/java/jre/lib/i386/client:/opt/java/jre/lib/i386/native_threads:/opt/java/jre/lib/i386:/usr/local/lib:.
 export LESS="-MdqC"
 export LESSCHARSET=utf-8
 export MANPAGER=less
