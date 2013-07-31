@@ -1,5 +1,6 @@
 # General aliases
 alias ?=man
+alias -- -=%-
 alias chars='wc -c'
 alias clr=clear
 alias com='gzip -v'
