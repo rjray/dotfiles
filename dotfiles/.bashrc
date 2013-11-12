@@ -81,7 +81,7 @@ if test -n "$PS1"; then
 
     export PS1="\[\e]0;\h: \w\007\]{ \h: \! $GREEN\$(parse_git_branch)$NORMAL} "
     if [ "x${NO_GIT_PROMPT}" != "x" ]; then
-        export PS1="{ \h: \! } "
+        export PS1="\[\e]0;\h: \w\007\]{ \h: \! } "
     fi
     # Stripped-down un-ornamented prompt for consoles:
     if [ "x${TERM}" == "xlinux" -o "x${TERM}" == "xdumb" ]; then
