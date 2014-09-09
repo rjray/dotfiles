@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+perlfiles=$(ack -f --perl $@)
+
+(for file in $perlfiles; do
+    lines=$(perltidy --noprofile --delete-pod --delete-block-comments --mbl=0 --standard-output $file | wc -l);
+    echo "$lines,$file";
+done) | perl -lne '($l, $n) = split /,/, $_, 2; $t += $l; $f++; $m{$n} = $l;' \
+-e 'END { if ($f > 1) { print "$t Total"; } }' \
+-e 'END { for my $n (sort keys %m) { printf "%${w}d %s\n", $m{$n}, $n; } }' \
+-e 'END { $w = length $t; }'
+
+exit
