@@ -1,6 +1,9 @@
 #!/bin/sh
 rsync -auv dotfiles/ ~
-lesskey lesskey.txt
+
+if [ "$(which lesskey)" ]; then
+    lesskey lesskey.txt
+fi
 
 if [ -z "${HOSTNAME}" ]; then
     HOSTNAME=$(hostname -s)
