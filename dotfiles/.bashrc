@@ -40,6 +40,11 @@ if [ -f ${HOME}/.bash-${HOSTNAME} ]; then
     . ${HOME}/.bash-${HOSTNAME}
 fi
 
+# If there is a private file on this host, load it
+if [ -f ${HOME}/.bash-private ]; then
+    . ${HOME}/.bash-private
+fi
+
 # If this is an interactive shell, enable completions
 if test -n "$PS1"; then
     # Init completion, as some of the command-level bits need this
@@ -104,8 +109,3 @@ if [ -f ${HOME}/perl5/perlbrew/etc/bashrc ]; then
     source ${HOME}/perl5/perlbrew/etc/bashrc
     export MANPATH=$(perl -MConfig -e 'print "$Config{installman1dir}:$Config{installman3dir}"'):$MANPATH
 fi
-
-# Added by nvm
-
-export NVM_DIR="/u/rjray/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
