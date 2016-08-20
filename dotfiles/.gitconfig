@@ -35,3 +35,16 @@
     initempty = "!f(){ git init \"$@\" && git commit -m \"(initial empty commit)\" --allow-empty;};f"
     new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
     submodule-rm = !git-submodule-rm.sh
+    last = "!f(){ \
+        git reflog \
+        | perl -nE'BEGIN{ $i = shift @ARGV }' \
+                -E'say $1 if /moving from (.*?) to/ and ( $i eq \"all\" or ! $i-- )' $1 \
+        }; f"
+    graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format: %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
+    shove = push -f
+    undo = reset --hard
+    clear = reset --hard HEAD
+    archeology = blame -w -C -n
+    # gitk
+    gitkconflict = !gitk --left-right HEAD...MERGE_HEAD
+    k = !gitk
