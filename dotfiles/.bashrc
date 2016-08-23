@@ -74,7 +74,7 @@ if test -n "$PS1"; then
         [[ -d .git/rebase-apply ]] && echo " REBASING"
     }
     function parse_git_dirty {
-        [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "*"
+    [[ $(git status 2> /dev/null | tail -n1 | grep "nothing to commit, working (directory|tree) clean") ]] || echo "*"
     }
     function parse_git_branch {
         branch=$(git branch 2> /dev/null | grep "*" | sed -e s/^..//g)
