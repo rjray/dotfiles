@@ -29,7 +29,7 @@ psg() {
 }
 
 pod() {
-    pod2man "$*" | nroff -man | less
+    pod2text -o "$*" | less
 }
 
 zl() {
