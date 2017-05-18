@@ -49,3 +49,7 @@ localtime () {
 iplist() {
     ifconfig | perl -nle '/dr:(\S+)/ && print $1'
 }
+
+em () {
+    for file in $*; do emacsclient -e "(find-file \"$file\")"; done
+}
