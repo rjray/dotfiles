@@ -34,7 +34,6 @@
     hist = log --all --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
     initempty = "!f(){ git init \"$@\" && git commit -m \"(initial empty commit)\" --allow-empty;};f"
     new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-    submodule-rm = !git-submodule-rm.sh
     last = "!f(){ \
         git reflog \
         | perl -nE'BEGIN{ $i = shift @ARGV }' \
