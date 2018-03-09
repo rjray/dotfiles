@@ -105,7 +105,7 @@ export PATH=${HOME}/bin:${PATH}
 
 # Do we have Linuxbrew set up?
 if [ -d /home/linuxbrew/.linuxbrew ]; then
-    export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+    export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
     export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
     export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 fi
