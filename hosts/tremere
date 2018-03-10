@@ -8,4 +8,4 @@ export AUTHOR_TESTING=1
 
 # This machine has some newer versions of things in /usr/local, that aren't
 # as up-to-date in /usr.
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/cuda/bin:/usr/local/bin:$PATH
