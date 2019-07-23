@@ -101,11 +101,9 @@ if [ -d ${HOME}/.bash ]; then
     done
 fi
 
-export PATH=${HOME}/bin:${PATH}
+export PATH=${HOME}/bin:${PATH}:node_modules/.bin
 
 # Do we have Linuxbrew set up?
 if [ -d /home/linuxbrew/.linuxbrew ]; then
-    export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
-    export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
-    export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
