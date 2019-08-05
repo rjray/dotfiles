@@ -9,3 +9,6 @@ export AUTHOR_TESTING=1
 # This machine has some newer versions of things in /usr/local, that aren't
 # as up-to-date in /usr.
 export PATH=/usr/local/cuda/bin:/usr/local/bin:$PATH
+
+# For AWS EB
+export PATH="/home/rjray/.ebcli-virtual-env/executables:$PATH"
