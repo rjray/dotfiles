@@ -27,6 +27,9 @@ default = "(unknown)"
 symbol = "🐚 "
 disabled = true
 
+[nodejs]
+style = "bold fg:28"
+
 # Modules I simply don't want to use:
 [kubernetes]
 disabled = true
