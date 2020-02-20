@@ -1,26 +1,4 @@
 add_newline = false
-prompt_order = [
-    "username",
-    "hostname",
-    "directory",
-    "git_branch",
-    "git_commit",
-    "git_state",
-    "git_status",
-    "package",
-    "golang",
-    "haskell",
-    "java",
-    "nodejs",
-    "python",
-    "rust",
-    "aws",
-    "env_var",
-    "line_break",
-    "jobs",
-    "battery",
-    "character",
-]
 
 [character]
 symbol = "$"
@@ -47,3 +25,44 @@ style = "bold fg:12"
 variable = "SHELL"
 default = "(unknown)"
 symbol = "🐚 "
+disabled = true
+
+# Modules I simply don't want to use:
+[kubernetes]
+disabled = true
+
+[hg_branch]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[elm]
+disabled = true
+
+[php]
+disabled = true
+
+[ruby]
+disabled = true
+
+[terraform]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[conda]
+disabled = true
+
+[memory_usage]
+disabled = true
+
+[crystal]
+disabled = true
+
+[cmd_duration]
+disabled = true
+
+[time]
+disabled = true
