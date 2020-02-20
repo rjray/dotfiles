@@ -1,0 +1,49 @@
+add_newline = false
+prompt_order = [
+    "username",
+    "hostname",
+    "directory",
+    "git_branch",
+    "git_commit",
+    "git_state",
+    "git_status",
+    "package",
+    "golang",
+    "haskell",
+    "java",
+    "nodejs",
+    "python",
+    "rust",
+    "aws",
+    "env_var",
+    "line_break",
+    "jobs",
+    "battery",
+    "character",
+]
+
+[character]
+symbol = "$"
+error_symbol = "✗"
+style_success = "bold fg:16"
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
+
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+
+[directory]
+style = "bold fg:12"
+
+[env_var]
+variable = "SHELL"
+default = "(unknown)"
+symbol = "🐚 "
