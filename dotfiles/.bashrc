@@ -101,6 +101,11 @@ if [ -d ${HOME}/.bash ]; then
     done
 fi
 
+function set_win_title(){
+    echo -ne "\033]0; $HOSTNAME: $(dirs +0) \007"
+}
+starship_precmd_user_func="set_win_title"
+
 export PATH=${HOME}/bin:${PATH}:node_modules/.bin
 
 # Do we have Linuxbrew set up?
