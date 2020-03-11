@@ -36,12 +36,6 @@ zl() {
     zcat "$*" | less
 }
 
-moduse() {
-    pkg="$1"
-    shift
-    ack -L "use $pkg" `ack -l "$pkg" $*`
-}
-
 localtime () {
     perl -le 'for (@ARGV) { print scalar localtime($_) }' $*
 }
@@ -52,4 +46,8 @@ iplist() {
 
 em () {
     for file in $*; do emacsclient -e "(find-file \"$file\")"; done
+}
+
+addnodebin () {
+    export PATH=$PATH:$PWD/node_modules/.bin
 }
