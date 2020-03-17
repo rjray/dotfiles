@@ -106,7 +106,7 @@ function set_win_title(){
 }
 starship_precmd_user_func="set_win_title"
 
-export PATH=${HOME}/bin:${PATH}:node_modules/.bin
+export PATH=${HOME}/bin:${PATH}
 
 # Do we have Linuxbrew set up?
 if [ -d /home/linuxbrew/.linuxbrew ]; then
