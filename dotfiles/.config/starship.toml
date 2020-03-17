@@ -30,6 +30,9 @@ disabled = true
 [nodejs]
 style = "bold fg:28"
 
+[python]
+style = "dimmed red"
+
 # Modules I simply don't want to use:
 [kubernetes]
 disabled = true
