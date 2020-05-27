@@ -1,9 +1,0 @@
-# Stuff specific to work desktop
-export PERLBREW_ROOT=/opt/perlbrew
-export PERLBREW_HOME=/opt/perlbrew-libs
-export PATH=/opt/perlbrew/bin:/sbin:/usr/sbin:$PATH
-export LC_ALL=en_US.UTF-8
-
-if [ -f ${PERLBREW_ROOT}/etc/bashrc ]; then
-    source ${PERLBREW_ROOT}/etc/bashrc
-fi
