@@ -112,3 +112,13 @@ export PATH=${HOME}/bin:${PATH}
 if [ -d /home/linuxbrew/.linuxbrew ]; then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
+
+# If rustup is on this machine, add to the PATH:
+if [ -f $HOME/.cargo/env ]; then
+    . $HOME/.cargo/env
+fi
+
+# Is there a local::lib-based local Perl setup?
+if [ -d $HOME/perl5/lib/perl5 ]; then
+    eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+fi
