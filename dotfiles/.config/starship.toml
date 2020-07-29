@@ -3,7 +3,6 @@ add_newline = false
 [character]
 symbol = "$"
 error_symbol = "✗"
-style_success = "bold fg:16"
 
 [battery]
 full_symbol = "🔋"
