@@ -36,7 +36,3 @@ if [ "x$go" != "x" ]; then
     export GOPATH=$(go env GOPATH)
     export PATH=$PATH:$GOPATH/bin
 fi
-
-if [ -d "$HOME/.cargo/bin:$PATH" ]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
-fi
