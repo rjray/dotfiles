@@ -122,3 +122,8 @@ fi
 if [ -d $HOME/perl5/lib/perl5 ]; then
     eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 fi
+
+# If Starship is available, use it.
+if [ -f "$(brew --prefix)/bin/starship" ]; then
+    eval "$($(brew --prefix)/bin/starship init bash)"
+fi
