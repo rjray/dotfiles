@@ -1,9 +1,4 @@
-cache/
 .thumbnails/
-BitTorrent/
 Dropbox/
-.Trash/
-Cache/
 .cache/
-.VirtualBox/
-vmware/
+node_modules/
