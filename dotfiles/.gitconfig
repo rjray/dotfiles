@@ -17,6 +17,7 @@
     log = no
     diff = no
 [alias]
+    br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
     st = status
     d = diff
     ci = commit -v
