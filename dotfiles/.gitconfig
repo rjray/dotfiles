@@ -16,6 +16,7 @@
     status = no
     log = no
     diff = no
+    branch = no
 [alias]
     br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
     st = status
@@ -29,6 +30,7 @@
     llt = log -p trunk..
     lm = log master..
     llm = log -p master..
+    lg = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30
     b = branch
     up = pull --rebase origin master
     pom = push origin master
@@ -42,7 +44,7 @@
         }; f"
     graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format: %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
     shove = push -f
-    undo = reset --hard
+    undo = reset HEAD~1 --mixed
     clear = reset --hard HEAD
     archeology = blame -w -C -n
     # gitk
