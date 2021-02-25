@@ -51,3 +51,8 @@ em () {
 addnodebin () {
     export PATH=$PATH:$PWD/node_modules/.bin
 }
+
+upremote () {
+    (cd $* && (git remote | grep upstream > /dev/null) && git fetch upstream && git merge upstream/master && git push origin master)
+}
+

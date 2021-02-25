@@ -127,3 +127,10 @@ fi
 if [ -f "$(brew --prefix)/bin/starship" ]; then
     eval "$($(brew --prefix)/bin/starship init bash)"
 fi
+
+# If pyenv is available, enabled it.
+if [ -d $HOME/.pyenv/bin ]; then
+    export PATH="$HOME/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
