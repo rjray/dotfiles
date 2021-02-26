@@ -28,11 +28,9 @@ disabled = true
 
 [nodejs]
 style = "bold fg:28"
-disabled = true
 
 [python]
 style = "dimmed red"
-disabled = true
 
 [java]
 disabled = true

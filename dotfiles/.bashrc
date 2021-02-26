@@ -134,3 +134,7 @@ if [ -d $HOME/.pyenv/bin ]; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
+# Some Python stuff seems to land here:
+if [ -d $HOME/.local/bin ]; then
+    export PATH="$PATH:$HOME/.local/bin"
+fi
