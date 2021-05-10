@@ -10,5 +10,10 @@ backuphome () {
 # as up-to-date in /usr.
 export PATH=/usr/local/cuda/bin:/usr/local/bin:$PATH
 
+# Add TeX stuff:
+export PATH=/home/rjray/.tex/bin/x86_64-linux:$PATH
+export MANPATH=/home/rjray/.tex/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/home/rjray/.tex/texmf-dist/doc/info:$INFOPATH
+
 # For AWS EB
 #export PATH="/home/rjray/.ebcli-virtual-env/executables:$PATH"
