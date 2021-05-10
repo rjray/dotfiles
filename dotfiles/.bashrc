@@ -138,3 +138,15 @@ fi
 if [ -d $HOME/.local/bin ]; then
     export PATH="$PATH:$HOME/.local/bin"
 fi
+
+# Deno
+if [ -d $HOME/.deno/bin ]; then
+    export DENO_INSTALL="$HOME/.deno"
+    export PATH="$PATH:$DENO_INSTALL/bin"
+fi
+
+# plenv
+if which plenv > /dev/null; then eval "$(plenv init -)"; fi
+
+# nodenv
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
