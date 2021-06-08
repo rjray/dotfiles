@@ -118,20 +118,15 @@ if [ -f $HOME/.cargo/env ]; then
     . $HOME/.cargo/env
 fi
 
-# Is there a local::lib-based local Perl setup?
-if [ -d $HOME/perl5/lib/perl5 ]; then
-    eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
-fi
-
 # If Starship is available, use it.
 if [ -f "$(brew --prefix)/bin/starship" ]; then
     eval "$($(brew --prefix)/bin/starship init bash)"
 fi
 
 # If pyenv is available, enabled it.
-if [ -d $HOME/.pyenv/bin ]; then
+if which pyenv > /dev/null; then
     export PATH="$HOME/.pyenv/bin:$PATH"
-    eval "$(pyenv init -)"
+    eval "$(pyenv init --path)"
     eval "$(pyenv virtualenv-init -)"
 fi
 # Some Python stuff seems to land here:
