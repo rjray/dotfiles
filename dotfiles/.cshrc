@@ -1,6 +1,4 @@
 unlimit
-#limit descriptors 256
-umask 002
 
 if ($?prompt) then
     if ( -f /bin/bash ) exec /bin/bash -login
