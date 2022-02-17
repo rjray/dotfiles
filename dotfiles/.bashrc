@@ -113,18 +113,18 @@ if [ -d /home/linuxbrew/.linuxbrew ]; then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
+# If Starship is available, use it.
+if which starship 2> /dev/null; then
+    eval "$(starship init bash)"
+fi
+
 # If rustup is on this machine, add to the PATH:
 if [ -f $HOME/.cargo/env ]; then
     . $HOME/.cargo/env
 fi
 
-# If Starship is available, use it.
-if [ -f "$(brew --prefix)/bin/starship" ]; then
-    eval "$($(brew --prefix)/bin/starship init bash)"
-fi
-
 # If pyenv is available, enabled it.
-if which pyenv > /dev/null; then
+if which pyenv 2> /dev/null; then
     export PATH="$HOME/.pyenv/bin:$PATH"
     eval "$(pyenv init --path)"
     eval "$(pyenv virtualenv-init -)"
@@ -141,7 +141,7 @@ if [ -d $HOME/.deno/bin ]; then
 fi
 
 # plenv
-if which plenv > /dev/null; then eval "$(plenv init -)"; fi
+if which plenv 2> /dev/null; then eval "$(plenv init -)"; fi
 
 # nodenv
-if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
+if which nodenv 2> /dev/null; then eval "$(nodenv init -)"; fi
