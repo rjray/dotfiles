@@ -20,6 +20,7 @@ if [ "x$UNAME" != "xDarwin" ]; then
 fi
 
 export ACK_COLOR_FILENAME=underline
+export BROWSER=firefox
 export EDITOR=/usr/bin/vim
 export FULLNAME='Randy J. Ray'
 export HOST=$(hostname -s)
