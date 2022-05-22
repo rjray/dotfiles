@@ -114,7 +114,7 @@ if [ -d /home/linuxbrew/.linuxbrew ]; then
 fi
 
 # If Starship is available, use it.
-if which starship 2> /dev/null; then
+if which starship > /dev/null; then
     eval "$(starship init bash)"
 fi
 
@@ -124,7 +124,7 @@ if [ -f $HOME/.cargo/env ]; then
 fi
 
 # If pyenv is available, enabled it.
-if which pyenv 2> /dev/null; then
+if which pyenv > /dev/null; then
     export PATH="$HOME/.pyenv/bin:$PATH"
     eval "$(pyenv init --path)"
     eval "$(pyenv virtualenv-init -)"
@@ -141,7 +141,7 @@ if [ -d $HOME/.deno/bin ]; then
 fi
 
 # plenv
-if which plenv 2> /dev/null; then eval "$(plenv init -)"; fi
+if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 
 # nodenv
-if which nodenv 2> /dev/null; then eval "$(nodenv init -)"; fi
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
