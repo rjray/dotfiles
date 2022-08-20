@@ -1,6 +1,7 @@
 # .bashrc
 
 shopt -s no_empty_cmd_completion
+umask 0022
 
 # Source global definitions
 for file in /etc/bashrc; do
