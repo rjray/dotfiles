@@ -9,3 +9,8 @@ export PATH=/usr/local/cuda/bin:/usr/local/bin:$PATH
 export PATH=/home/rjray/bin/texlive/2022/bin/x86_64-linux:$PATH
 export MANPATH=/home/rjray/bin/texlive/2022/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/home/rjray/bin/texlive/2022/texmf-dist/doc/info:$INFOPATH
+
+fix_snap() {
+    sudo apparmor_parser -r /etc/apparmor.d/*snap-confine*
+    sudo apparmor_parser -r /var/lib/snapd/apparmor/profiles/snap-confine*
+}
