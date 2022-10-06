@@ -32,8 +32,6 @@
     llm = log -p master..
     lg = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30
     b = branch
-    up = pull --rebase origin master
-    pom = push origin master
     hist = log --all --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
     initempty = "!f(){ git init \"$@\" && git commit -m \"(initial empty commit)\" --allow-empty;};f"
     new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
@@ -43,10 +41,10 @@
                 -E'say $1 if /moving from (.*?) to/ and ( $i eq \"all\" or ! $i-- )' $1 \
         }; f"
     graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format: %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
-    shove = push -f
     undo = reset HEAD~1 --mixed
     clear = reset --hard HEAD
     archeology = blame -w -C -n
+    tmpstash = stash push -u -m 'Tmp Stash'
     # gitk
     gitkconflict = !gitk --left-right HEAD...MERGE_HEAD
     k = !gitk
