@@ -109,6 +109,11 @@ starship_precmd_user_func="set_win_title"
 
 export PATH=${HOME}/bin:${PATH}
 
+# Is the oneAPI toolchain available?
+if [ -f /opt/intel/oneapi/setvars.sh ]; then
+    source /opt/intel/oneapi/setvars.sh > /dev/null
+fi
+
 # Do we have Linuxbrew set up?
 if [ -d /home/linuxbrew/.linuxbrew ]; then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
