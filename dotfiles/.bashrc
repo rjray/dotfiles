@@ -110,9 +110,9 @@ starship_precmd_user_func="set_win_title"
 export PATH=${HOME}/bin:${PATH}
 
 # Is the oneAPI toolchain available?
-if [ -f /opt/intel/oneapi/setvars.sh ]; then
-    source /opt/intel/oneapi/setvars.sh > /dev/null
-fi
+#if [ -f /opt/intel/oneapi/setvars.sh ]; then
+    #source /opt/intel/oneapi/setvars.sh > /dev/null
+#fi
 
 # Do we have Linuxbrew set up?
 if [ -d /home/linuxbrew/.linuxbrew ]; then
@@ -144,6 +144,12 @@ fi
 if [ -d $HOME/.deno/bin ]; then
     export DENO_INSTALL="$HOME/.deno"
     export PATH="$PATH:$DENO_INSTALL/bin"
+fi
+
+# Bun
+if [ -d $HOME/.bun/bin ]; then
+    export BUN_INSTALL="$HOME/.bun"
+    export PATH="$PATH:$BUN_INSTALL/bin"
 fi
 
 # plenv
