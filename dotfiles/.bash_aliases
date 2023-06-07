@@ -38,7 +38,7 @@ zl() {
 }
 
 localtime () {
-    perl -le 'for (@ARGV) { print scalar localtime($_) }' $*
+    perl -le 'for (@ARGV) { print scalar localtime(($_ =~ /(\d+)/)[0]) }' $*
 }
 
 iplist() {
