@@ -57,3 +57,14 @@ upremote () {
     (cd $* && (git remote | grep upstream > /dev/null) && git fetch upstream && git merge upstream/master && git push origin master)
 }
 
+# Explicitly add the oneAPI toolchain (if available and not already in $PATH)
+add_intel() {
+    if [ -z $(which icx) ]
+    then
+        if [ -f /opt/intel/oneapi/setvars.sh ]; then
+            source /opt/intel/oneapi/setvars.sh > /dev/null
+        fi
+    else
+        echo "oneAPI toolchain not available."
+    fi
+}
