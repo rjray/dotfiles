@@ -11,17 +11,14 @@ use YAML::Syck;
 
 my $home = $ENV{HOME};
 my $file = shift;
-if (! $file)
-{
+if (! $file) {
     die "USAGE: $0 FILE\n";
 }
 
-if (! File::Spec->file_name_is_absolute($file))
-{
+if (! File::Spec->file_name_is_absolute($file)) {
     $file = File::Spec->catfile($home, $file);
 }
-if  (! (-f $file && -r $file))
-{
+if (! (-f $file && -r $file)) {
     croak "File '$file' does not exist or is not readable, stopped";
 }
 my $config = LoadFile $file;
@@ -29,8 +26,7 @@ my $config = LoadFile $file;
 # Set up the match-pattern for env vars
 my $envpat = join q{|}, map { '\$' . $_ } (keys %ENV);
 
-foreach my $target (sort keys %{$config})
-{
+foreach my $target (sort keys %{$config}) {
     my $tfile = File::Spec->catfile($home, $target);
     my @keys = sort keys %{$config->{$target}};
     printf "Expanding %d tag%s in %s\n",
@@ -40,8 +36,7 @@ foreach my $target (sort keys %{$config})
     open my $ifh, '<', $tfile;
     open my $ofh, '>', "$tfile.new";
 
-    while (defined($_ = <$ifh>))
-    {
+    while (defined($_ = <$ifh>)) {
         # Do env vars first, to catch the leading $
         s/($envpat)/$ENV{substr $1, 1}/g;
         s/($pat)/$config->{$target}->{$1}/g;
