@@ -20,6 +20,7 @@ alias rehash='hash -r'
 alias Rsync='rsync -e ssh -auzv'
 alias sds=dirs
 alias today='cal -3'
+alias tt=taskwarrior-tui
 alias uncom=gunzip
 alias words='wc -w'
 alias z=suspend
