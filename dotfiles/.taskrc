@@ -20,3 +20,8 @@ include dark-blue-256.theme
 #include no-color.theme
 
 regex=on
+context.ismdb.read=project:ismdb
+context.ismdb.write=project:ismdb
+news.version=2.6.0
+uda.blocks.type=string
+uda.blocks.label=Blocks
