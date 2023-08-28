@@ -49,4 +49,4 @@
     gitkconflict = !gitk --left-right HEAD...MERGE_HEAD
     k = !gitk
 [commit]
-    template = /home/rjray/.gitmessage
+    template = $HOME/.gitmessage
