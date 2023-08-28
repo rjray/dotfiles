@@ -35,7 +35,7 @@ pod() {
 }
 
 zl() {
-    zcat "$*" | less
+    gzcat "$*" | less
 }
 
 localtime () {
