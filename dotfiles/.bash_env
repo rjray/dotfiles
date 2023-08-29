@@ -2,7 +2,7 @@
 # name, so force it.
 export HOSTNAME=$(hostname -s)
 
-if [ "x$UNAME" != "xDarwin" ]; then
+if [ "x${UNAME}" != "xDarwin" ]; then
     unset LC_ALL
     export LANG=en_US.UTF-8
     export LC_CTYPE=en_US.utf8
@@ -23,7 +23,7 @@ export ACK_COLOR_FILENAME=underline
 export BROWSER=firefox
 export EDITOR=/usr/bin/vim
 export FULLNAME='Randy J. Ray'
-export HOST=$(hostname -s)
+export HOST=${HOSTNAME}
 export LESS="-MdqC"
 export LESSCHARSET=utf-8
 export MANPAGER=less
@@ -37,5 +37,5 @@ export PAGER=/usr/bin/less
 go=$(which go)
 if [ "x$go" != "x" ]; then
     export GOPATH=$(go env GOPATH)
-    export PATH=$PATH:$GOPATH/bin
+    export PATH=${PATH}:${GOPATH}/bin
 fi
