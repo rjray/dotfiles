@@ -1,4 +1,4 @@
-# For some reason, $HOSTNAME is coming in as the FQDN. I prefer the short
+# For some reason, HOSTNAME is coming in as the FQDN. I prefer the short
 # name, so force it.
 export HOSTNAME=$(hostname -s)
 
