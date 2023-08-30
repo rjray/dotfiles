@@ -1,0 +1,2 @@
+# Make sure .git is still ignored even with --hidden:
+.git
