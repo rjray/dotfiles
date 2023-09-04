@@ -10,6 +10,7 @@
 [github]
     user = rjray
     token = $githubtoken
+    igist = $github_igist
 [core]
     excludesfile = $HOME/.gitexcludes
 [pager]

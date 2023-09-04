@@ -25,6 +25,7 @@ export ACK_COLOR_FILENAME=underline
 export BROWSER=firefox
 export EDITOR=/usr/bin/vim
 export FULLNAME='Randy J. Ray'
+export GITHUB_IGIST=$github_igist
 export GITHUBTOKEN=$githubtoken
 export HOST=${HOSTNAME}
 export LESS="-MdqC"
