@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
 
+use 5.018;
 use strict;
 use warnings;
 use autodie qw(open close);
@@ -8,6 +9,8 @@ use Carp qw(croak);
 use File::Spec;
 
 use YAML::Syck;
+
+our $VERSION = '0.5';
 
 my $home = $ENV{HOME};
 my $file = shift;
@@ -23,28 +26,43 @@ if (! (-f $file && -r $file)) {
 }
 my $config = LoadFile $file;
 
-# Set up the match-pattern for env vars
-my $envpat = join q{|}, map { '\$' . $_ } (keys %ENV);
+# Grab and save any global settings:
+my $globals = $config->{global} || {};
+delete $config->{global};
+
+# Set up the base table for environment vars and global values:
+my %match_table = %ENV;
+for my $key (keys %{$globals}) {
+    $match_table{$key} = $globals->{$key};
+}
+my $global_count = scalar keys %{$globals};
 
 foreach my $target (sort keys %{$config}) {
     my $tfile = File::Spec->catfile($home, $target);
-    my @keys = sort keys %{$config->{$target}};
-    printf "Expanding %d tag%s in %s\n",
-        scalar(@keys), ($#keys ? 's' : q{}), $tfile;
+    my $local_table = $config->{$target} || {};
+    my @keys = sort keys %{$local_table};
+    my $local_count = scalar @keys;
+    my %ALL = (%match_table, %{$local_table});
+    my @all_keys = (keys %match_table, @keys);
+    my $pl = ($local_count + $global_count != 1) ? 's' : q{};
 
-    my $pat = join q{|}, @keys;
+    printf "Expanding tag$pl in %s (%d global, %d specific)\n",
+        $tfile, $global_count, $local_count;
+
+    my $pat = join q{|}, map { q{\$} . $_ } (sort keys %ALL);
+    print STDERR ">>> $pat\n";
     open my $ifh, '<', $tfile;
+    my @lines = <$ifh>;
+    close $ifh;
+
     open my $ofh, '>', "$tfile.new";
 
-    while (defined($_ = <$ifh>)) {
-        # Do env vars first, to catch the leading $
-        s/($envpat)/$ENV{substr $1, 1}/g;
-        s/($pat)/$config->{$target}->{$1}/g;
-        print {$ofh} $_;
+    for my $line (@lines) {
+        $line =~ s/($pat)/$ALL{substr $1, 1}/g;
+        print {$ofh} $line;
     }
 
     close $ofh;
-    close $ifh;
     print "Moving $tfile.new to $tfile\n";
     unlink $tfile;
     rename "$tfile.new", $tfile;

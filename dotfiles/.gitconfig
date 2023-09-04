@@ -9,7 +9,7 @@
     diff = auto
 [github]
     user = rjray
-    token = GITHUBTOKEN
+    token = $githubtoken
 [core]
     excludesfile = $HOME/.gitexcludes
 [pager]

@@ -1,3 +1,5 @@
+# -*- mode: bash-ts-mode -*-
+
 # For some reason, HOSTNAME is coming in as the FQDN. I prefer the short
 # name, so force it.
 export HOSTNAME=$(hostname -s)
@@ -23,6 +25,7 @@ export ACK_COLOR_FILENAME=underline
 export BROWSER=firefox
 export EDITOR=/usr/bin/vim
 export FULLNAME='Randy J. Ray'
+export GITHUBTOKEN=$githubtoken
 export HOST=${HOSTNAME}
 export LESS="-MdqC"
 export LESSCHARSET=utf-8
@@ -30,7 +33,7 @@ export MANPAGER=less
 export MANPATH=/usr/man:/usr/local/man:/usr/share/man:${HOME}/bin/man:/opt/java/man:${MANPATH}
 export NAME="Randy J. Ray"
 export NODE_ENV=development
-export OPENAI_API_KEY=openai_api_key
+export OPENAI_API_KEY=$openai_api_key
 export PAGER=/usr/bin/less
 
 # If this system has go installed, set up GOPATH and augment PATH.
