@@ -50,7 +50,6 @@ foreach my $target (sort keys %{$config}) {
         $tfile, $global_count, $local_count;
 
     my $pat = join q{|}, map { q{\$} . $_ } (sort keys %ALL);
-    print STDERR ">>> $pat\n";
     open my $ifh, '<', $tfile;
     my @lines = <$ifh>;
     close $ifh;
