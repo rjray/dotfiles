@@ -36,6 +36,8 @@ export NAME="Randy J. Ray"
 export NODE_ENV=development
 export OPENAI_API_KEY=$openai_api_key
 export PAGER=/usr/bin/less
+export VAULT_ADDR=$vault_addr
+export VAULT_NAMESPACE=$vault_namespace
 
 # If this system has go installed, set up GOPATH and augment PATH.
 go=$(which go)
