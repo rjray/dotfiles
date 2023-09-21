@@ -46,6 +46,6 @@
     clear = reset --hard HEAD
     archeology = blame -w -C -n
     tmpstash = stash push -u -m 'Tmp Stash'
-    gsl = stash list
+    list = stash list
 [commit]
     template = $HOME/.gitmessage
