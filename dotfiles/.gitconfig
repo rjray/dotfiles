@@ -46,8 +46,6 @@
     clear = reset --hard HEAD
     archeology = blame -w -C -n
     tmpstash = stash push -u -m 'Tmp Stash'
-    # gitk
-    gitkconflict = !gitk --left-right HEAD...MERGE_HEAD
-    k = !gitk
+    gsl = stash list
 [commit]
     template = $HOME/.gitmessage
