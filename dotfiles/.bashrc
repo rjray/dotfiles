@@ -10,6 +10,11 @@ for file in /etc/bashrc; do
     fi
 done
 
+# ble.sh
+if [ -f $HOME/.local/share/blesh/ble.sh ]; then
+    [[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh
+fi
+
 # Because MacOS is so very different in some (annoying) ways, note the
 # machine type for use here and in .bash_env:
 export UNAME=$(uname)
@@ -158,12 +163,10 @@ if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 # nodenv
 if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
 
-# ble.sh
-if [ -f $HOME/.local/share/blesh/ble.sh ]; then
-    source ~/.local/share/blesh/ble.sh
-fi
-
 # Atuin
 if which atuin > /dev/null; then
     eval "$(atuin init bash)"
 fi
+
+# More ble.sh
+[[ ${BLE_VERSION-} ]] && ble-attach
