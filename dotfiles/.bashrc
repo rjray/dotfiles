@@ -157,3 +157,13 @@ if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 
 # nodenv
 if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
+
+# ble.sh
+if [ -f $HOME/.local/share/blesh/ble.sh ]; then
+    source ~/.local/share/blesh/ble.sh
+fi
+
+# Atuin
+if which atuin > /dev/null; then
+    eval "$(atuin init bash)"
+fi
