@@ -157,6 +157,12 @@ if [ -d $HOME/.bun/bin ]; then
     export PATH="$PATH:$BUN_INSTALL/bin"
 fi
 
+# nvm
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+    . "$NVM_DIR/nvm.sh"
+    . "$NVM_DIR/bash_completion"
+fi
+
 # plenv
 if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 

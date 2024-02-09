@@ -34,6 +34,7 @@ export MANPAGER=less
 export MANPATH=/usr/man:/usr/local/man:/usr/share/man:${HOME}/bin/man:/opt/java/man:${MANPATH}
 export NAME="Randy J. Ray"
 export NODE_ENV=development
+export NVM_DIR="$HOME/.nvm"
 export OPENAI_API_KEY=$openai_api_key
 export PAGER=/usr/bin/less
 export VAULT_ADDR=$vault_addr
