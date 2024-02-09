@@ -31,7 +31,7 @@
     llt = log -p trunk..
     lm = log master..
     llm = log -p master..
-    lg = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     b = branch
     hist = log --all --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
     initempty = "!f(){ git init \"$@\" && git commit -m \"(initial empty commit)\" --allow-empty;};f"
