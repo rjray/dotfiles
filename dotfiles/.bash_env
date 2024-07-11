@@ -24,6 +24,7 @@ fi
 export ACK_COLOR_FILENAME=underline
 export BROWSER=firefox
 export EDITOR=/usr/bin/vim
+export ENSCRIPT="-h -M Letter --color --highlight"
 export FULLNAME='Randy J. Ray'
 export GITHUB_IGIST=$github_igist
 export GITHUBTOKEN=$githubtoken

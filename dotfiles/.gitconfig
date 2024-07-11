@@ -49,3 +49,5 @@
     list = stash list
 [commit]
     template = $HOME/.gitmessage
+[init]
+    defaultBranch = main
