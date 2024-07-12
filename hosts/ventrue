@@ -1,9 +1,10 @@
 # Stuff specific to ventrue
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+alias reset-dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 # Move /usr/local/bin to the front for the brew-added elements. Don't
 # completely overwrite $PATH, because OS X sets it up initially.
-export PATH=/usr/local/bin:/usr/local/Cellar/perl/5.30.1/bin:$PATH
+export PATH=/opt/homebrew/bin:/usr/local/Cellar/perl/5.30.1/bin:$PATH
 
 # These are needed because the test in .bashrc won't find them on MacOS:
 eval "$(pyenv init -)"
