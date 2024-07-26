@@ -124,6 +124,10 @@ if [ -d /home/linuxbrew/.linuxbrew ]; then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
+if [ -d /opt/homebrew ]; then
+    eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
 # If Starship is available, use it.
 if which starship > /dev/null; then
     eval "$(starship init bash)"
