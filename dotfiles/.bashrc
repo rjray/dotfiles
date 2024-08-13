@@ -119,6 +119,12 @@ export PATH=${HOME}/bin:${PATH}
     #source /opt/intel/oneapi/setvars.sh > /dev/null
 #fi
 
+# nvm
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+    . "$NVM_DIR/nvm.sh"
+    . "$NVM_DIR/bash_completion"
+fi
+
 # Do we have Linuxbrew set up?
 if [ -d /home/linuxbrew/.linuxbrew ]; then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
@@ -159,12 +165,6 @@ fi
 if [ -d $HOME/.bun/bin ]; then
     export BUN_INSTALL="$HOME/.bun"
     export PATH="$PATH:$BUN_INSTALL/bin"
-fi
-
-# nvm
-if [ -s "$NVM_DIR/nvm.sh" ]; then
-    . "$NVM_DIR/nvm.sh"
-    . "$NVM_DIR/bash_completion"
 fi
 
 # plenv
