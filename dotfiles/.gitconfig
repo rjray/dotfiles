@@ -1,6 +1,6 @@
 [user]
     name = Randy J. Ray
-    email = rjray@blackperl.com
+    email = $email
 [apply]
     whitespace = nowarn
 [color]
