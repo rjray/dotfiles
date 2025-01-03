@@ -4,6 +4,7 @@ alias -- -=%-
 alias chars='wc -c'
 alias clr=clear
 alias com='gzip -v'
+alias e='eza --icons --sort=Name'
 alias ff='echo firefox --new-tab "file://$(perl -MFile::Spec -le "print File::Spec->rel2abs(shift)")"'
 alias h='history +50'
 alias hup='kill -HUP \!*'
