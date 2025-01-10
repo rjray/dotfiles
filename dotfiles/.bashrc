@@ -71,33 +71,6 @@ if test -n "$PS1"; then
             done
         fi
     fi
-
-    RED="\[\e[0;31m\]"
-    YELLOW="\[\e[0;33m\]"
-    GREEN="\[\e[0;32m\]"
-    NORMAL="\[\e[0m\]"
-    function parse_git_in_rebase {
-        [[ -d .git/rebase-apply ]] && echo " REBASING"
-    }
-    function parse_git_dirty {
-    [[ $(git status 2> /dev/null | tail -n1 | grep -E "nothing to commit, working (directory|tree) clean") ]] || echo "*"
-    }
-    function parse_git_branch {
-        branch=$(git branch 2> /dev/null | grep "*" | sed -e s/^..//g)
-        if [[ -z ${branch} ]]; then
-            return
-        fi
-        echo "("${branch}$(parse_git_dirty)$(parse_git_in_rebase)") "
-    }
-
-    export PS1="\[\e]0;\h: \w\007\]{ \h: \! $GREEN\$(parse_git_branch)$NORMAL} "
-    if [ "x${NO_GIT_PROMPT}" != "x" ]; then
-        export PS1="\[\e]0;\h: \w\007\]{ \h: \! } "
-    fi
-    # Stripped-down un-ornamented prompt for consoles:
-    if [ "x${TERM}" == "xlinux" -o "x${TERM}" == "xdumb" ]; then
-        export PS1='% '
-    fi
 fi
 
 # Do we have any stand-alone "command" files?
@@ -118,12 +91,6 @@ export PATH=${HOME}/bin:${PATH}
 #if [ -f /opt/intel/oneapi/setvars.sh ]; then
     #source /opt/intel/oneapi/setvars.sh > /dev/null
 #fi
-
-# nvm
-if [ -s "$NVM_DIR/nvm.sh" ]; then
-    . "$NVM_DIR/nvm.sh"
-    . "$NVM_DIR/bash_completion"
-fi
 
 # Do we have Linuxbrew set up?
 if [ -d /home/linuxbrew/.linuxbrew ]; then
@@ -166,6 +133,12 @@ fi
 if [ -d $HOME/.bun/bin ]; then
     export BUN_INSTALL="$HOME/.bun"
     export PATH="$PATH:$BUN_INSTALL/bin"
+fi
+
+# nvm
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+    . "$NVM_DIR/nvm.sh"
+    . "$NVM_DIR/bash_completion"
 fi
 
 # plenv
