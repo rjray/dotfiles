@@ -16,6 +16,7 @@ alias ll='/bin/ls -lasi'
 alias lll='/bin/ls -saild'
 alias ls='ls -F'
 alias lsd='ls -d .[_0-9a-zA-Z]*'
+alias paths='echo $PATH | tr : "\n"'
 alias po=popd
 alias pu=pushd
 alias rehash='hash -r'
