@@ -141,6 +141,9 @@ if [ -s "$NVM_DIR/nvm.sh" ]; then
     . "$NVM_DIR/bash_completion"
 fi
 
+# fzf
+if which fzf > /dev/null; then eval "$(fzf --bash)"; fi
+
 # plenv
 if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 
