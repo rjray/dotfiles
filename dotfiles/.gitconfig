@@ -1,53 +1,116 @@
+# Some content here adapted from James Cherti:
+# https://github.com/jamescherti/jc-dotfiles
+
 [user]
-    name = Randy J. Ray
-    email = $email
+name = Randy J. Ray
+email = $email
+
 [apply]
-    whitespace = nowarn
-[color]
-    status = auto
-    branch = auto
-    diff = auto
+whitespace = nowarn
+
+[color "branch"]
+remote = green
+local = yellow
+current = yellow reverse
+
+[color "diff"]
+frag = magenta bold
+whitespace = red reverse
+meta = yellow bold
+new = green bold
+old = red bold
+
+[color "status"]
+untracked = cyan
+changed = green
+added = green
+
 [github]
-    user = rjray
-    token = $githubtoken
-    igist = $github_igist
+user = rjray
+token = $githubtoken
+igist = $github_igist
+
 [core]
-    excludesfile = $HOME/.gitexcludes
+excludesfile = $HOME/.gitexcludes
+pager = less -X -R
+quotepath = off
+attributesfile = ~/.gitattributes_global
+whitespace = space-before-tab,trailing-space
+precomposeunicode = false
+
+[difftool]
+prompt = false
+
+[diff "elisp"]
+xfuncname = ^\\([^[:space:]]*def[^[:space:]]+[[:space:]]+([^()[:space:]]+)
+
+[diff "cpp"]
+xfuncname = "!^[ \\t]*[A-Za-z_][A-Za-z_0-9]*:[[:space:]]*($|/[/*])\n^((::[[:space:]]*)?[A-Za-z_][A-Za-z_0-9]*[[:space:]]*\\(.*)$\n^((#define[[:space:]]|DEFUN).*)$"
+
+[diff "m4"]
+xfuncname = ^((m4_)?define|A._DEFUN(_ONCE)?)\\([^),]*
+
+[diff "make"]
+xfuncname = ^([$.[:alnum:]_].*:|[[:alnum:]_]+[[:space:]]*([*:+]?[:?]?|!?)=|define .*)
+
+[diff "shell"]
+xfuncname = ^([[:space:]]*[[:alpha:]_][[:alnum:]_]*[[:space:]]*\\(\\)|[[:alpha:]_][[:alnum:]_]*=)
+
+[diff "texinfo"]
+xfuncname = ^@node[[:space:]]+([^,[:space:]][^,]+)
+
+[diff]
+algorithm = histogram
+colorMoved = plain
+colorMovedWS = allow-indentation-change
+context = 5
+mnemonicPrefix = true
+noPrefix = true
+renames = copies
+renameLimit = 2400
+
 [pager]
-    status = no
-    log = no
-    diff = no
-    branch = no
+status = no
+log = no
+diff = no
+branch = no
+
 [alias]
-    br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
-    st = status
-    d = diff
-    ci = commit -v
-    cia = commit -v -a
-    co = checkout
-    l = log --name-status
-    ll = log -p
-    lt = log trunk..
-    llt = log -p trunk..
-    lm = log master..
-    llm = log -p master..
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-    b = branch
-    hist = log --all --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
-    initempty = "!f(){ git init \"$@\" && git commit -m \"(initial empty commit)\" --allow-empty;};f"
-    new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-    last = "!f(){ \
-        git reflog \
-        | perl -nE'BEGIN{ $i = shift @ARGV }' \
-                -E'say $1 if /moving from (.*?) to/ and ( $i eq \"all\" or ! $i-- )' $1 \
-        }; f"
-    graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format: %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
-    undo = reset HEAD~1 --mixed
-    clear = reset --hard HEAD
-    archeology = blame -w -C -n
-    tmpstash = stash push -u -m 'Tmp Stash'
-    list = stash list
+br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+st = status
+d = diff
+ci = commit -v
+cia = commit -v -a
+co = checkout
+l = log --name-status
+ll = log -p
+lt = log trunk..
+llt = log -p trunk..
+lm = log master..
+llm = log -p master..
+lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+b = branch
+hist = log --all --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
+initempty = "!f(){ git init \"$@\" && git commit -m \"(initial empty commit)\" --allow-empty;};f"
+new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+last = "!f(){ \
+    git reflog \
+    | perl -nE'BEGIN{ $i = shift @ARGV }' \
+            -E'say $1 if /moving from (.*?) to/ and ( $i eq \"all\" or ! $i-- )' $1 \
+    }; f"
+graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format: %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
+undo = reset HEAD~1 --mixed
+clear = reset --hard HEAD
+archeology = blame -w -C -n
+tmpstash = stash push -u -m 'Tmp Stash'
+list = stash list
+
 [commit]
-    template = $HOME/.gitmessage
+template = $HOME/.gitmessage
+cleanup = strip
+
+[tag]
+forceSignAnnotated = true
+
 [init]
-    defaultBranch = main
+defaultBranch = main
