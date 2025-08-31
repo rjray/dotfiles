@@ -26,6 +26,8 @@ export BROWSER=firefox
 export EDITOR=/usr/bin/vim
 export ENSCRIPT="-h -M Letter --color --highlight"
 export FULLNAME='Randy J. Ray'
+# Needed for tonfotos app
+export G_SLICE=always-malloc
 export GITHUB_IGIST=$github_igist
 export GITHUBTOKEN=$githubtoken
 export HOST=${HOSTNAME}
