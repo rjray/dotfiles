@@ -30,6 +30,7 @@ export FULLNAME='Randy J. Ray'
 export G_SLICE=always-malloc
 export GITHUB_IGIST=$github_igist
 export GITHUBTOKEN=$githubtoken
+export GPG_TTY=$(tty)
 export HOST=${HOSTNAME}
 export LESS="-MdqC"
 export LESSCHARSET=utf-8

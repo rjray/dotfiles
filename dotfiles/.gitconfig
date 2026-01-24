@@ -4,6 +4,7 @@
 [user]
 name = Randy J. Ray
 email = $email
+signingkey = $gpg_signing_key
 
 [apply]
 whitespace = nowarn
@@ -108,9 +109,13 @@ list = stash list
 [commit]
 template = $HOME/.gitmessage
 cleanup = strip
+gpgsign = $gpg_should_sign
 
 [tag]
 forceSignAnnotated = true
 
 [init]
 defaultBranch = main
+
+[gpg]
+program = $gpg_program

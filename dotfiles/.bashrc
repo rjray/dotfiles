@@ -11,8 +11,10 @@ for file in /etc/bashrc; do
 done
 
 # ble.sh
-if [ -f $HOME/.local/share/blesh/ble.sh ]; then
-    [[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh
+if ["x$TERM_PROGRAM" != "xvscode"]; then
+    if [ -f $HOME/.local/share/blesh/ble.sh ]; then
+        [[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh
+    fi
 fi
 
 # Because MacOS is so very different in some (annoying) ways, note the
