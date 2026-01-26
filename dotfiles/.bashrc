@@ -11,7 +11,7 @@ for file in /etc/bashrc; do
 done
 
 # ble.sh
-if ["x$TERM_PROGRAM" != "xvscode"]; then
+if [ "x$TERM_PROGRAM" != "xvscode" ]; then
     if [ -f $HOME/.local/share/blesh/ble.sh ]; then
         [[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh
     fi
