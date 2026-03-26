@@ -154,7 +154,7 @@ if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
 
 # Atuin
 if which atuin > /dev/null; then
-    eval "$(atuin init bash)"
+    eval "$(atuin init bash --disable-ai)"
 fi
 
 # More ble.sh
