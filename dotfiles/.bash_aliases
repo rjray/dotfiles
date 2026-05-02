@@ -61,18 +61,6 @@ upremote () {
     (cd $* && (git remote | grep upstream > /dev/null) && git fetch upstream && git merge upstream/master && git push origin master)
 }
 
-mkcd () {
-    mkdir -p "$1" && cd "$1"
-}
-
-ff () {
-    find . -type f -iname "*$1*" 2>/dev/null
-}
-
-fd () {
-    find . -type d -iname "*$1*" 2>/dev/null
-}
-
 colors () {
     for i in {0..255}; do
         printf '\e[48;5;%dm%3d ' "$i" "$i"
@@ -95,10 +83,6 @@ ports () {
 
 git-undo () {
     git reset --soft HEAD~1
-}
-
-top-size () {
-    du -hs * 2>/dev/null | sort -rh | head -10
 }
 
 gcap () {
